@@ -1,0 +1,17 @@
+<html>
+<head>
+<body>
+
+<% @listing_repository.all.reverse.each do |listing| %>
+    <div>
+    <p><%= listing.id %></p>
+    <p><%= listing.name %></p>
+    <p><%= listing.description %></p>
+    <p><%= listing.price_per_night %></p>
+    <p><%= listing.user_id %></p>
+    </div>      
+    <% end %>
+    </div>
+</body
+</head>
+</html>
