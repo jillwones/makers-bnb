@@ -1,7 +1,6 @@
 <html>
   <head>
-  <style>
-    </style>
+    <style></style>
   </head>
   <body>
     <header>
@@ -9,17 +8,17 @@
       <h1>Sign Up</h1>
       <div> <%= @message unless @message.nil? %> </div>
       <form action="/" method="post">
-            <label for="email_address">Email Address:</label>
-            <input type="text" placeholder="Enter Email" name="email_address" required>
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-            <div>
-              <button type="submit" class='login-button'>Login</button>
-              <a href="/signup">
-                <button type="button">Sign Up</button>
-              </a>
-            </div>
-        </form>
-  </body>
-</html>
+        <label for="email_address">Email Address:</label>
+        <input type="text" placeholder="Enter Email" name="email_address" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+        <div>
+          <button type="submit" class='login-button'>Login</button>
+          <a href="/signup">
+            <button type="button">Sign Up</button>
+          </a>
+        </div>
+      </form>
+    </body>
+  </html>

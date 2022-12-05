@@ -46,4 +46,25 @@ class Application < Sinatra::Base
     session[:message] = "Successfully logged out."
     redirect "/"
   end
+
+  get '/signup' do 
+    @message = session.delete(:message)
+    return erb(:signup)
+  end
+
+  post '/signup' do 
+    @user_repository = UserRepository.new 
+    new_user = User.new 
+    new_user.name = params[:name]
+    new_user.email_address = params[:email_address] 
+    new_user.password = params[:password]
+    taken = @user_repository.check_if_email_taken(params[:email_address])
+    if taken 
+      session[:message] = 'Email taken - use another'
+      return redirect '/signup'
+    end
+    session[:message] = 'Account Successfully Created - Please Log In'
+    @user_repository.create(new_user)
+    return redirect '/'
+  end
 end

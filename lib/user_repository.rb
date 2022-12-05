@@ -31,6 +31,14 @@ class UserRepository
     return record_to_user_object(record)
   end
 
+  def check_if_email_taken(email)
+    sql = 'SELECT email_address FROM users;'
+    sql_params = []
+    result_set = DatabaseConnection.exec_params(sql, sql_params)
+    email_taken = result_set.any? { |record| record['email_address'] == email }
+    email_taken
+  end
+
   private
 
   def record_to_user_object(record)

@@ -47,4 +47,23 @@ RSpec.describe Application do
       expect(response.body).to include("Sign Up")
     end
   end
+
+  context 'GET /signup' do 
+    it 'returns the signup page' do 
+      response = get('/signup')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Enter your details below')
+    end
+  end
+
+  context 'POST /signup' do 
+    it 'returns the login page with success message' do 
+      post('/signup', name: 'Freddy', email_address: 'freddy@freddy.com', password: 'freddy')
+      response = get('/')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Account Successfully Created - Please Log In')
+    end
+  end
 end

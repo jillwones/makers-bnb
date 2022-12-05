@@ -46,4 +46,14 @@ describe UserRepository do
     expect(user.name).to eq("Jude")
     expect(user.id).to eq("1")
   end
+
+  it 'returns true when email is taken' do 
+    repo = UserRepository.new 
+    expect(repo.check_if_email_taken('jude@jude.com')).to eq(true)
+  end
+
+  it 'returns false when the email is not taken' do 
+    repo = UserRepository.new 
+    expect(repo.check_if_email_taken('newemail@jude.com')).to eq(false)
+  end
 end
