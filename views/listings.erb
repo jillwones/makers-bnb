@@ -1,0 +1,14 @@
+<html>
+  <head>
+  <style>
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome, <%= session[:user].name %></h1>
+      <div><form action="/logout" method="post">         
+  <button type="submit">Log Out</button>
+</form></div>
+    
+  </body>
+</html>
