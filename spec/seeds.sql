@@ -1,22 +1,22 @@
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  name text,
-  email_address text,
-  password text
-);
+-- CREATE TABLE users (
+--   id SERIAL PRIMARY KEY,
+--   name text,
+--   email_address text,
+--   password text
+-- );
 
-CREATE TABLE listings (
-  id SERIAL PRIMARY KEY,
-  name text,
-  description text,
-  price_per_night decimal,
-  user_id int,
-  constraint fk_user foreign key(user_id) references users(id)
-);
+-- CREATE TABLE listings (
+--   id SERIAL PRIMARY KEY,
+--   name text,
+--   description text,
+--   price_per_night decimal,
+--   user_id int,
+--   constraint fk_user foreign key(user_id) references users(id)
+-- );
 
 
 
-TRUNCATE TABLE users listings RESTART IDENTITY;
+TRUNCATE TABLE users, listings RESTART IDENTITY;
 
 INSERT INTO users (name, email_address, password) VALUES ('Jude', 'jude@jude.com', '$2a$12$sO9PRZqxvPyshRD6KP1fS.jIRQjrUn2zbYW2u4HAMz/MjHToNovPa');
 INSERT INTO users (name, email_address, password) VALUES ('Aimee', 'aimee@aimee.com', '$2a$12$ra6XG3WgBaYau.tUB6i.LOl1a3tYn1pq/p909.h4JSYIYovR5XRZ.');
