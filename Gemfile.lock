@@ -1,7 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    bcrypt (3.1.18)
     diff-lcs (1.5.0)
+    htmlbeautifier (1.4.2)
     multi_json (1.15.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
@@ -43,6 +45,8 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  bcrypt (~> 3.1)
+  htmlbeautifier (~> 1.4)
   pg (~> 1.4)
   rack-test (~> 2.0)
   rspec (~> 3.12)

@@ -31,4 +31,4 @@ INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('Apar
 INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('House1', 'Four bedrooms in west London', 280, 3);
 INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('House2', 'Five bedrooms in east London', 100, 4);
 INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('House3', 'Six bedrooms in central London', 100, 5);
-INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('Apartment3', 'Studio falt in central London', 85.75, 1);
+INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('Apartment3', 'Studio flat in central London', 85.75, 1);
