@@ -32,7 +32,7 @@ RSpec.describe Application do
   context "POST /" do
     it "returns a logged in page with valid details" do
       post("/", email_address: "jude@jude.com", password: "jude")
-      response = get("/listings")
+      response = get("/homepage")
       expect(response.status).to eq(200)
       expect(response.body).to include("Welcome, Jude")
     end

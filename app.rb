@@ -30,15 +30,15 @@ class Application < Sinatra::Base
 
       session[:user] = user
 
-      redirect "/listings"
+      redirect "/homepage"
     else
       session[:message] = "Incorrect details"
       redirect "/"
     end
   end
 
-  get "/listings" do
-    return erb(:listings)
+  get "/homepage" do
+    return erb(:homepage)
   end
 
   post "/logout" do
