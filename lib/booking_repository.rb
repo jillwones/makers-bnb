@@ -17,7 +17,7 @@ class BookingRepository
     
     record = result_set[0]
 
-    return record_to_booking_object(record)
+    return booking_to_object(record)
   end
 
   def accept(id)
@@ -35,7 +35,7 @@ class BookingRepository
 
   private 
 
-  def record_to_booking_object(record)
+  def booking_to_object(record)
     booking = Booking.new
 
     booking.id = record["id"]
