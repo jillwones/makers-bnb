@@ -11,6 +11,27 @@ class BookingRepository
     end
     bookings
   end
+  
+  def create(booking)
+    sql = "INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ($1, $2, $3, $4, $5);"
+    sql_params = [booking.name, booking.date, booking.booked, booking.user_id, booking.listing_id]
+
+    DatabaseConnection.exec_params(sql, sql_params)
+
+    return nil
+  end
+  
+  def accept(id)
+    sql = "UPDATE bookings SET booked = 'yes' WHERE id = $1;"
+    DatabaseConnection.exec_params(sql, [id])
+    return nil
+  end
+
+  def decline(id)
+    sql = "UPDATE bookings SET booked = 'no' WHERE id = $1;"
+    DatabaseConnection.exec_params(sql, [id])
+    return nil
+  end
 
   def find_by_owner_id(owner_id)
     sql = 'SELECT bookings.id, bookings.name, bookings.date, bookings.booked, bookings.user_id, bookings.listing_id FROM bookings JOIN listings ON bookings.listing_id = listings.id WHERE listings.user_id = $1;'
@@ -54,4 +75,3 @@ class BookingRepository
     return booking
   end
 end
-
