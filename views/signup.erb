@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>MakersBnB</title>
+  </head>
+  <body>
+    <h2>MakersBnB</h2>
+    <form action="/" method="get">
+      <button type="submit">Go Back</button>
+    </form>
+    <h2>Sign Up</h2>
+    <h4>Enter your details below...</h4>
+    <div> <%= @message unless @message.nil? %> </div>
+    <form action="/signup" method="post">
+      <div class="container">
+        <label for="name">Name</label>
+        <input type="text" placeholder="Enter Fullname" name="name" required>
+        <label for="email_address">Email</label>
+        <input type="text" placeholder="Enter Email" name="email_address" required>
+        <label for="password" class='white-text'>Password</label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+        <button type="submit">Create Account</button>
+      </div>
+    </form>
+  </body>
+</html>
