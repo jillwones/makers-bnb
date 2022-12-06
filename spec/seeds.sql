@@ -1,30 +1,3 @@
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  name text,
-  email_address text,
-  password text
-);
-
-CREATE TABLE listings (
-  id SERIAL PRIMARY KEY,
-  name text,
-  description text,
-  price_per_night decimal,
-  user_id int,
-  constraint fk_user foreign key(user_id) references users(id)
-);
-
-CREATE TABLE bookings (
-  id SERIAL PRIMARY KEY,
-  name text,
-  date date,
-  booked boolean,
-  user_id int,
-  constraint fk_user foreign key(user_id) references users(id),
-  listing_id int,
-  constraint fk_listing foreign key(listing_id) references listings(id)
-);
-
 TRUNCATE TABLE users, listings, bookings RESTART IDENTITY;
 
 INSERT INTO users (name, email_address, password) VALUES ('Jude', 'jude@jude.com', '$2a$12$sO9PRZqxvPyshRD6KP1fS.jIRQjrUn2zbYW2u4HAMz/MjHToNovPa');
@@ -40,9 +13,9 @@ INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('Hous
 INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('House3', 'Six bedrooms in central London', 100, 5);
 INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('Apartment3', 'Studio flat in central London', 85.75, 1);
 
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment1', '2022-10-10', true, 2, 1);
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment2', '2022-09-09', false, 3, 2);
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House1', '2022-10-20', null, 4, 3);
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House2', '2022-10-11', true, 5, 4);
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House3', '2022-07-28', false, 1, 5);
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment3', '2022-10-15', null, 2, 6);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment1', '2022-10-10', 'yes', 2, 1);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment2', '2022-09-09', 'no', 3, 2);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House1', '2022-10-20', 'pending', 4, 3);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House2', '2022-10-11', 'yes', 5, 4);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House3', '2022-07-28', 'no', 1, 5);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment3', '2022-10-15', 'pending', 2, 6);
