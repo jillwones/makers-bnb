@@ -21,6 +21,7 @@ RSpec.describe Application do
       expect(response.body).to include("<p>Listing id: 1</p>")
       expect(response.body).to include("<p>Apartment1</p>")
       expect(response.body).to include("<p>Two bedrooms in north London</p>")
+      expect(response.body).to include("View listing</a>")
     end
   end
 

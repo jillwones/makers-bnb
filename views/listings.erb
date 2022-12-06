@@ -1,17 +1,17 @@
 <html>
 <head>
 <body>
-
 <% @listing_repository.all.reverse.each do |listing| %>
     <div>
-    <p>Listing id: <%= listing.id %></p>
-    <p><%= listing.name %></p>
-    <p><%= listing.description %></p>
-    <p><%= listing.price_per_night %></p>
-    <p>User id: <%= listing.user_id %></p>
+        <p>Listing id: <%= listing.id %></p>
+        <p><%= listing.name %></p>
+        <p><%= listing.description %></p>
+        <p><%= listing.price_per_night %></p>
+        <p>User id: <%= listing.user_id %></p>
+        <a href="/listings/<%= listing.id %>">View listing</a>
+        <p>&nbsp</p>
     </div>      
-    <% end %>
-    </div>
+<% end %>
 </body
 </head>
 </html>
