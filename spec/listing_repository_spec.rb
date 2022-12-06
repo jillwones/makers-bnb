@@ -48,16 +48,17 @@ describe ListingRepository do
     end
   end
 
-  xcontext "delete method" do
-    it "deletes a listing" do
-      repo = ListingRepository.new
-      repo.delete(1)
-      listings = repo.all
 
-      expect(listings.length).to eq(5)
-      expect(listings.first.id).to eq("2")
-    end
-  end
+  # context "delete method" do
+  #   it "deletes a listing" do
+  #     repo = ListingRepository.new
+  #     repo.delete(1)
+  #     listings = repo.all
+
+  #     expect(listings.length).to eq(5)
+  #     expect(listings.first.id).to eq("2")
+  #   end
+  # end
 
   context "find_by_id method" do
     it "finds a single listing by id" do
