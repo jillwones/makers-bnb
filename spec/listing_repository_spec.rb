@@ -48,7 +48,7 @@ describe ListingRepository do
     end
   end
 
-  context "delete method" do
+  xcontext "delete method" do
     it "deletes a listing" do
       repo = ListingRepository.new
       repo.delete(1)
