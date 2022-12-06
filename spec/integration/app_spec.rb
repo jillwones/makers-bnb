@@ -13,23 +13,23 @@ RSpec.describe Application do
     reset_tables
   end
 
-  context "get/listings" do
+  context "get /listings" do
     it "returns 200 OK with all listings" do
       response = get("/listings")
 
       expect(response.status).to eq(200)
-      expect(response.body).to include("<p>1</p>")
+      expect(response.body).to include("<p>Listing id: 1</p>")
       expect(response.body).to include("<p>Apartment1</p>")
       expect(response.body).to include("<p>Two bedrooms in north London</p>")
     end
   end
 
-  context "get/listings/:id" do
+  context "get /listings/:id" do
     it "returns 200 OK with specified listing" do
       response = get("/listings/1")
 
       expect(response.status).to eq 200
-      expect(response.body).to include("<p>1</p>")
+      expect(response.body).to include("<p>Listing id: 1</p>")
       expect(response.body).to include("<p>Apartment1</p>")
       expect(response.body).to include("<p>Two bedrooms in north London</p>")
     end
@@ -38,23 +38,23 @@ RSpec.describe Application do
       response = get("/listings/2")
 
       expect(response.status).to eq 200
-      expect(response.body).to include("<p>2</p>")
+      expect(response.body).to include("<p>Listing id: 2</p>")
       expect(response.body).to include("<p>Apartment2</p>")
       expect(response.body).to include("<p>Three bedrooms in central London</p>")
       expect(response.body).to include("<p>170.50</p>")
     end
   end
 
-  context "get/new_listing_form" do 
+  context "get /new_listing_form" do 
     it "returns 200 OK and a form to create new listing" do
-      response = get("/get/new_listing_form")
+      response = get("/new_listing_form")
       expect(response.status).to eq 200
-      expect(response.body).to include('<form action="/new_listing" method="post">')
+      expect(response.body).to include('<form action="/new_listing_form" method="post">')
       expect(response.body).to include('<label for="name">Name:</label><br>')
     end 
   end
 
-  context "post/new_listing_form" do
+  context "post /new_listing_form" do
     it "returns 200 OK and adds listing to database" do
       response = post(
         "/new_listing_form",
@@ -67,21 +67,21 @@ RSpec.describe Application do
       response = get("/listings/7")
       
       expect(response.status).to eq 200
-      expect(response.body).to include('<p>2</p>')
+      expect(response.body).to include('<p>Listing id: 7</p>')
       expect(response.body).to include('<p>Loft</p>')
       expect(response.body).to include('<p>Loft conversion in South London</p>')
       expect(response.body).to include('<p>150</p>')
-      expect(response.body).to include('<p>7</p>')
+      expect(response.body).to include('<p>User id: 2</p>')
 
 
       response = get("/listings")
       
       expect(response.status).to eq 200
-      expect(response.body).to include('<p>2</p>')
+      expect(response.body).to include('<p>Listing id: 7</p>')
       expect(response.body).to include('<p>Loft</p>')
       expect(response.body).to include('<p>Loft conversion in South London</p>')
       expect(response.body).to include('<p>150</p>')
-      expect(response.body).to include('<p>7</p>')
+      expect(response.body).to include('<p>User id: 2</p>')
     end 
   end 
 end
