@@ -10,16 +10,6 @@ class BookingRepository
     return nil
   end
 
-  def find(id)
-    sql = "SELECT id, name, date, booked, user_id, listing_id FROM bookings WHERE id = $1;"
-
-    result_set = DatabaseConnection.exec_params(sql, [id])
-    
-    record = result_set[0]
-
-    return booking_to_object(record)
-  end
-
   def accept(id)
     sql = "UPDATE bookings SET booked = 'yes' WHERE id = $1;"
     DatabaseConnection.exec_params(sql, [id])
