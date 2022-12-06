@@ -1,5 +1,6 @@
 require 'database_connection'
 ENV['ENV'] = 'test'
+
 # Make sure this connects to your test database
 # (its name should end with '_test')
 DatabaseConnection.connect
