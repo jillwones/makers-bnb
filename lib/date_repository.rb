@@ -2,7 +2,7 @@ require 'date'
 
 class DateRepository
   def find_by_listing_id(listing_id)
-    sql = 'SELECT id, available_date, listing_id FROM dates_available WHERE listing_id = $1;'
+    sql = 'SELECT id, date_available, listing_id FROM dates_available WHERE listing_id = $1;'
     params = [listing_id]
     result_set = DatabaseConnection.exec_params(sql,params)
     dates = []
@@ -12,9 +12,9 @@ class DateRepository
     dates
   end
 
-  def delete_by_listing_id_and_date(listing_id,date)
-    sql = 'DELETE FROM dates_available WHERE listing_id = $1 and date = $2;'
-    params = [listing_id,date]
+  def delete_by_listing_id_and_date(listing_id, date)
+    sql = 'DELETE FROM dates_available WHERE listing_id = $1 and date_available = $2;'
+    params = [listing_id, date]
     DatabaseConnection.exec_params(sql,params)
   end
 

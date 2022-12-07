@@ -5,6 +5,7 @@ require_relative "lib/listing_repository"
 require_relative "lib/user_repository"
 require_relative "lib/booking_repository"
 require_relative "lib/date_repository"
+require_relative "lib/twilio.rb"
 require "bcrypt"
 require 'date'
 
@@ -93,7 +94,7 @@ class Application < Sinatra::Base
     new_listing.description = params[:description]
     new_listing.price_per_night = params[:price_per_night]
     # change below to 'new_listing.user_id = session[:user].id' once sessions added
-    new_listing.user_id = params[:user_id]
+    new_listing.user_id = session[:user].id
     method_to_make_multiple_dates(new_listing, params[:start_date], params[:end_date])
     listing_repository = ListingRepository.new
     listing_repository.create(new_listing)
@@ -117,9 +118,15 @@ class Application < Sinatra::Base
     return erb(:requests_for_approval)
   end
 
-  post '/accept/:id' do 
+  post '/accept/:request_id/:listing_id/:request_date/:user_id' do 
     @booking_repository = BookingRepository.new 
-    @booking_repository.accept(params[:id])
+    @booking_repository.accept(params[:request_id])
+    dates_available_repo = DateRepository.new 
+    dates_available_repo.delete_by_listing_id_and_date(params[:listing_id],params[:request_date])
+    user_repository = UserRepository.new 
+    user = user_repository.find_by_id(params[:user_id])
+    text = Text.new 
+    text.send_text_approved('+447379766090')
     return redirect '/requests-for-approval'
   end
 
@@ -127,6 +134,11 @@ class Application < Sinatra::Base
     @booking_repository = BookingRepository.new 
     @booking_repository.decline(params[:id])
     return redirect '/requests-for-approval'
+  end
+
+  get '/my-listings' do 
+    @listing_repository = ListingRepository.new
+    return erb(:my_listings)
   end
 
   def method_to_make_multiple_dates(listing, start_date, end_date)

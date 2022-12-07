@@ -16,7 +16,7 @@
           <p><b>Status: Pending</b></p>
           <p>buttons go here</p>
           
-          <form action="/accept/<%= request.id %>" method="post">
+          <form action="/accept/<%= request.id %>/<%= request.listing_id %>/<%= request.date %>/<%= request.user_id %>" method="post">
           <button type="submit">Accept</button>
           </form>
           

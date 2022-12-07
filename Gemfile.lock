@@ -3,11 +3,21 @@ GEM
   specs:
     bcrypt (3.1.18)
     diff-lcs (1.5.0)
+    faraday (2.7.1)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.2)
     htmlbeautifier (1.4.2)
+    jwt (2.5.0)
     multi_json (1.15.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
+    nokogiri (1.13.9-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.9-x86_64-darwin)
+      racc (~> 1.4)
     pg (1.4.5)
+    racc (1.6.1)
     rack (2.2.4)
     rack-protection (3.0.4)
       rack
@@ -39,6 +49,10 @@ GEM
       sinatra (= 3.0.4)
       tilt (~> 2.0)
     tilt (2.0.11)
+    twilio-ruby (5.73.4)
+      faraday (>= 0.9, < 3.0)
+      jwt (>= 1.5, <= 2.5)
+      nokogiri (>= 1.6, < 2.0)
     webrick (1.7.0)
 
 PLATFORMS
@@ -53,6 +67,7 @@ DEPENDENCIES
   rspec (~> 3.12)
   sinatra (~> 3.0)
   sinatra-contrib (~> 3.0)
+  twilio-ruby (~> 5.73)
   webrick (~> 1.7)
 
 BUNDLED WITH

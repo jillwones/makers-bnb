@@ -13,12 +13,12 @@ INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('Hous
 INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('House3', 'Six bedrooms in central London', 100, 5);
 INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('Apartment3', 'Studio flat in central London', 85.75, 1);
 
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment1', '2022-10-10', 'yes', 2, 1);
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment2', '2022-09-09', 'no', 3, 2);
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House1', '2022-10-20', 'pending', 4, 3);
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House2', '2022-10-11', 'yes', 5, 4);
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House3', '2022-07-28', 'no', 1, 5);
-INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment3', '2022-10-15', 'pending', 2, 6);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment1', '2023-10-10', 'yes', 2, 1);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment2', '2023-09-10', 'no', 3, 2);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House1', '2023-12-12', 'pending', 4, 3);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House2', '2023-05-01', 'yes', 5, 4);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('House3', '2023-03-01', 'no', 1, 5);
+INSERT INTO bookings (name, date, booked, user_id, listing_id) VALUES ('Apartment3', '2023-12-11', 'pending', 2, 6);
 
 INSERT INTO dates_available (date_available, listing_id) VALUES ('2023-10-10', 1);
 INSERT INTO dates_available (date_available, listing_id) VALUES ('2023-10-11', 1);

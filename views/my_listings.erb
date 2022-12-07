@@ -1,7 +1,7 @@
 <html>
 <head>
 <body>
-<% @listing_repository.all.reverse.each do |listing| %>
+<% @listing_repository.all.select { |listing| listing.user_id == session[:user].id }.reverse.each do |listing| %>
     <div>
         <p>Listing id: <%= listing.id %></p>
         <p><%= listing.name %></p>
@@ -12,6 +12,6 @@
         <p>&nbsp</p>
     </div>      
 <% end %>
-</body
+</body>
 </head>
 </html>

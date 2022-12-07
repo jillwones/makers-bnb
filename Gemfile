@@ -16,3 +16,5 @@ gem "rack-test", "~> 2.0"
 gem "bcrypt", "~> 3.1"
 
 gem "htmlbeautifier", "~> 1.4"
+
+gem "twilio-ruby", "~> 5.73"
