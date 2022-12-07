@@ -1,6 +1,7 @@
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   name text,
+  phone_number text,
   email_address text,
   password text
 );
@@ -11,6 +12,7 @@ CREATE TABLE listings (
   description text,
   price_per_night decimal,
   user_id int,
+  dates_available date ARRAY,
   constraint fk_user foreign key(user_id) references users(id)
 );
 
