@@ -64,8 +64,7 @@ describe BookingRepository do
       expect(booking.listing_id).to eq "3"
     end
   end
-end
-=======
+
   context 'all method' do
     it 'returns all bookings' do
       repo = BookingRepository.new
