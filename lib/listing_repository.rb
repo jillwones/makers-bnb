@@ -16,7 +16,19 @@ class ListingRepository
     sql = "INSERT INTO listings (name, description, price_per_night, user_id) VALUES ($1, $2, $3, $4);"
     params = [listing.name, listing.description, listing.price_per_night, listing.user_id]
     DatabaseConnection.exec_params(sql, params)
+    listing.dates_available.each do |date|
+      sql = "INSERT INTO dates_available (date_available, listing_id) VALUES($1, $2);"
+      params = [date, listing.id]
+      DatabaseConnection.exec_params(sql, params)
+    end
     return listing
+  end
+
+  def find_by_id(id)
+    sql = "SELECT id, name, description, price_per_night, user_id FROM listings WHERE id = $1;"
+    result_set = DatabaseConnection.exec_params(sql, [id])
+    record = result_set[0]
+    record_to_object(record)
   end
 
   # def delete(id)
@@ -32,14 +44,7 @@ class ListingRepository
     listing.description = record["description"]
     listing.price_per_night = record["price_per_night"]
     listing.user_id = record["user_id"]
-    return listing
-  end
 
-  def find_by_id(id)
-    sql = "SELECT id, name, description, price_per_night, user_id FROM listings WHERE id = $1;"
-    params = [id]
-    result_set = DatabaseConnection.exec_params(sql, [id])
-    record = result_set[0]
-    record_to_object(record)
+    return listing
   end
 end

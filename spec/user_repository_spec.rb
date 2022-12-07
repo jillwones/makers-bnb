@@ -56,4 +56,14 @@ describe UserRepository do
     repo = UserRepository.new 
     expect(repo.check_if_email_taken('newemail@jude.com')).to eq(false)
   end
+
+  it 'finds a user by id' do
+    repo = UserRepository.new
+    user = repo.find_by_id(1)
+
+    expect(user.id).to eq('1')
+    expect(user.name).to eq('Jude')
+    expect(user.email_address).to eq('jude@jude.com')
+    expect(user.phone_number).to eq('+447877916281')
+  end
 end
