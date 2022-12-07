@@ -3,7 +3,10 @@ require "sinatra/reloader"
 require_relative "lib/database_connection"
 require_relative "lib/listing_repository"
 require_relative "lib/user_repository"
+require_relative "lib/booking_repository"
+require_relative "lib/date_repository"
 require "bcrypt"
+require 'date'
 
 DatabaseConnection.connect
 
@@ -91,11 +94,47 @@ class Application < Sinatra::Base
     new_listing.price_per_night = params[:price_per_night]
     # change below to 'new_listing.user_id = session[:user].id' once sessions added
     new_listing.user_id = params[:user_id]
-    
+    method_to_make_multiple_dates(new_listing, params[:start_date], params[:end_date])
     listing_repository = ListingRepository.new
     listing_repository.create(new_listing)
     id = listing_repository.all.last.id
-
+    new_listing.id = id 
+    dates_available_repo = DateRepository.new 
+    new_listing.dates_available.each do |date|
+      dates_available_repo.create(new_listing, date)
+    end
     return redirect "/listings/#{id}"
+  end
+
+  get '/my-requests' do 
+    @booking_repository = BookingRepository.new
+    return erb(:my_requests)
+  end
+
+  get '/requests-for-approval' do 
+    @booking_repository = BookingRepository.new
+    @user_repository = UserRepository.new
+    return erb(:requests_for_approval)
+  end
+
+  post '/accept/:id' do 
+    @booking_repository = BookingRepository.new 
+    @booking_repository.accept(params[:id])
+    return redirect '/requests-for-approval'
+  end
+
+  post '/reject/:id' do 
+    @booking_repository = BookingRepository.new 
+    @booking_repository.decline(params[:id])
+    return redirect '/requests-for-approval'
+  end
+
+  def method_to_make_multiple_dates(listing, start_date, end_date)
+    start_date = Date.parse start_date
+    end_date = Date.parse end_date
+    while start_date <= end_date do 
+      listing.dates_available << start_date
+      start_date += 1
+    end
   end
 end

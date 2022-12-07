@@ -1,0 +1,53 @@
+<html>
+  <head></head>
+  <body>
+
+    <h2>Pending:</h2>
+    <% pending = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'pending'} %>
+    <% if pending.empty? %>
+      <p>No pending bookings</p>
+    <% else %>
+      <% pending.each do |request| %>
+        <div>
+          <p>Name: <%= request.name %></p>
+          <p>Date Requested: <%= request.date %></p>
+          <p><b>Status: Pending</b></p>
+          <a href="listings/<%= request.listing_id %>">View this listing</a>
+          <p>&nbsp</p>
+        </div>
+      <% end %>
+    <% end %>
+
+    <h2>Accepted:</h2>
+    <% accepted = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'yes'} %>
+    <% if accepted.empty?%>
+      <p>No accepted bookings</p>
+    <% else %>
+      <% accepted.each do |request| %>
+        <div>
+          <p>Name: <%= request.name %></p>
+          <p>Date Requested: <%= request.date %></p>
+          <p><b>Status: Accepted</b></p>
+          <a href="listings/<%= request.listing_id %>">View this listing</a>
+          <p>&nbsp</p>
+        </div>
+      <% end %>
+    <% end %>
+
+    <h2>Rejected:</h2>
+    <% rejected = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'no'} %>
+    <% if rejected.empty?%>
+      <p>No rejected bookings</p>
+    <% else %>
+      <% rejected.each do |request| %>
+        <div>
+          <p>Name: <%= request.name %></p>
+          <p>Date Requested: <%= request.date %></p>
+          <p><b>Status: Rejected</b></p>
+          <a href="listings/<%= request.listing_id %>">View this listing</a>
+          <p>&nbsp</p>
+        </div>
+      <% end %>
+    <% end %>
+    </body>
+</html>
