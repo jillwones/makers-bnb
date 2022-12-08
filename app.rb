@@ -153,6 +153,19 @@ class Application < Sinatra::Base
     dates_available_repo.delete_by_listing_id_and_date(params[:listing_id], params[:request_date])
     user_repository = UserRepository.new
     user = user_repository.find_by_id(params[:user_id])
+    text = Text.new 
+    text.send_text_approved('+447379766090') #argument should be user.phone_number
+    return redirect '/requests-for-approval'
+  end
+
+  post '/reject/:id/:user_id' do 
+    @booking_repository = BookingRepository.new 
+    @booking_repository.decline(params[:id])
+    user_repository = UserRepository.new 
+    user = user_repository.find_by_id(params[:user_id])
+    text = Text.new 
+    text.send_text_rejected('+447379766090') #argument should be user.phone_number
+    return redirect '/requests-for-approval'
     text = Text.new
     text.send_text_approved("+447379766090")
     return redirect "/requests-for-approval"

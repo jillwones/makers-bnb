@@ -20,7 +20,7 @@
           <button type="submit">Accept</button>
           </form>
           
-          <form action="/reject/<%= request.id %>" method="post">
+          <form action="/reject/<%= request.id %>/<%= request.user_id %>" method="post">
           <button type="submit">Reject</button>
           </form>
           <a href="listings/<%= request.listing_id %>">View this listing</a>
