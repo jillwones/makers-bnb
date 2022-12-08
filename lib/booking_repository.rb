@@ -63,6 +63,11 @@ class BookingRepository
     bookings
   end
 
+  def delete(id)
+    sql = 'DELETE FROM bookings WHERE id = $1;'
+    sql_params = [id]
+    DatabaseConnection.exec_params(sql, sql_params)
+  end
 
   def booking_to_object(record)
     booking = Booking.new

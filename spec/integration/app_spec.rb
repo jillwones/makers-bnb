@@ -242,4 +242,22 @@ RSpec.describe Application do
       expect(response.body).not_to include("Status: Pending")
     end
   end
+
+  context 'post /delete_listing/:listing_id' do 
+    it 'deletes the listing' do 
+      response = post('delete_listing/1')
+
+      expect(response.status).to eq(302)
+      expect(response.body).not_to include('Apartment1')
+    end
+  end
+
+  context 'post /delete_request/:request_id' do 
+    it 'deletes a booking request' do 
+      response = post('delete_request/1')
+
+      expect(response.status).to eq(302)
+      expect(response.body).not_to include('Apartment1')
+    end
+  end
 end

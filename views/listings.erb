@@ -1,7 +1,37 @@
 <html>
   <head>
+
+    <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" type="text/css" href="listings.css">
+  </head>
   <body>
-    <link rel="stylesheet" type="text/css" href="listings.css"><% @listing_repository.all.reverse.each do |listing| %> <br>
+    <ul class='nav'>
+      <li>
+        <a href="/homepage">MakersBnB</a>
+      </li>
+      <li>
+        <form action="/logout" method="post">
+          <button type="submit">Log Out</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-requests" method="get">
+          <button type="submit">View My Requests</button>
+        </form>
+      </li>
+      <li>
+        <form action="/requests-for-approval" method="get">
+          <button type="submit">View Requests For Me</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-listings" method="get">
+          <button type="submit">View My Listings</button>
+        </form>
+      </li>
+    </ul>
+    <h1 class="nice-title">All Listings</h1>
+    <% @listing_repository.all.reverse.each do |listing| %> <br>
     <br>
     <br>
     <div class="big-div">
@@ -19,5 +49,6 @@
     </div>
     </div>
     <br><% end %>
-  </body </head>
+  </body 
 </html>
+

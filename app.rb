@@ -186,6 +186,18 @@ class Application < Sinatra::Base
     return erb(:my_listings)
   end
 
+  post "/delete_listing/:listing_id" do 
+    @listing_repository = ListingRepository.new 
+    @listing_repository.delete(params[:listing_id])
+    return redirect '/my-listings'
+  end
+
+  post "/delete_request/:request_id" do 
+    booking_repository = BookingRepository.new 
+    booking_repository.delete(params[:request_id])
+    return redirect '/my-requests'
+  end
+
   def method_to_make_multiple_dates(listing, start_date, end_date)
     start_date = Date.parse start_date
     end_date = Date.parse end_date

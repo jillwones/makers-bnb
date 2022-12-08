@@ -1,24 +1,53 @@
 <html>
-<head>
-<body>
-<link rel="stylesheet" type="text/css" href="listings.css">
-<br>
-<br>
-<br>
-<% @listing_repository.all.select { |listing| listing.user_id == session[:user].id }.reverse.each do |listing| %>
-    <div>
-    
-        <h1><%= listing.name %></h2>
-        <p><%= listing.description %></p>
-        <p>£<%= sprintf("%.2f", listing.price_per_night) %> per night</p>
-         <h5><a href="/listings/<%= listing.id %>">
-        <br>
-        <div class="btn-container">
-        <button type="button" id="btn2" >View listing</button></a></h5>
-        
-        <p>&nbsp</p>
-    </div>      
-<% end %>
-</body>
-</head>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <ul class='nav'>
+      <li>
+        <a href="/homepage">MakersBnB</a>
+      </li>
+      <li>
+        <form action="/logout" method="post">
+          <button type="submit">Log Out</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-requests" method="get">
+          <button type="submit">View My Requests</button>
+        </form>
+      </li>
+      <li>
+        <form action="/requests-for-approval" method="get">
+          <button type="submit">View Requests For Me</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-listings" method="get">
+          <button type="submit">View My Listings</button>
+        </form>
+      </li>
+    </ul>
+    <body>
+    <% all_listings = @listing_repository.all.select { |listing| listing.user_id == session[:user].id } %>
+    <% if !all_listings.empty? %>
+    <h2 class="nice-title">My Listings</h2>
+      <% all_listings.reverse.each do |listing| %>
+        <div>
+          <p>Listing id: <%= listing.id %></p>
+          <p><%= listing.name %></p>
+          <p><%= listing.description %></p>
+          <p>£<%= sprintf("%.2f", listing.price_per_night) %> per night</p>
+          <p>User id: <%= listing.user_id %></p>
+          <a href="/listings/<%= listing.id %>">View listing</a>
+          <form action="/delete_listing/<%= listing.id %>" method="post">
+            <input type="submit" value="Delete Listing">
+          </form>
+          <p>&nbsp</p>
+        </div>
+      <% end %>
+    <% else %>
+        <h2 class="nice-title">No Listings</h2>
+    <% end %>
+    </body>
 </html>
+
