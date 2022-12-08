@@ -1,8 +1,8 @@
-require 'date'
+require_relative './date_available'
 
 class DateRepository
   def find_by_listing_id(listing_id)
-    sql = 'SELECT id, available_date, listing_id FROM dates_available WHERE listing_id = $1;'
+    sql = 'SELECT id, date_available, listing_id FROM dates_available WHERE listing_id = $1;'
     params = [listing_id]
     result_set = DatabaseConnection.exec_params(sql,params)
     dates = []
@@ -27,7 +27,7 @@ class DateRepository
   private
 
   def record_to_object(record)
-    date_available = Date.new
+    date_available = DateAvailable.new
     date_available.id = record["id"]
     date_available.date_available = record["date_available"]
     date_available.listing_id = record["listing_id"]
