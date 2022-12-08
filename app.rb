@@ -126,7 +126,6 @@ class Application < Sinatra::Base
     new_listing.name = params[:name]
     new_listing.description = params[:description]
     new_listing.price_per_night = params[:price_per_night]
-    # change below to 'new_listing.user_id = session[:user].id' once sessions added
     new_listing.user_id = session[:user].id
     method_to_make_multiple_dates(new_listing, params[:start_date], params[:end_date])
     listing_repository = ListingRepository.new

@@ -16,7 +16,7 @@
       
       <form action="/listings/<%= @listing.id %>" method="post">
        <label for="start">Date:</label>
-      <input type="date" id="start" name="date" required>
+      <input type="date" id="start" name="date" required min="<%= @dates.first.date_available %>" max="<%= @dates.last.date_available %>">
       <input class="button" type="submit" value="Submit Booking Request">
       </form>
     </div>
