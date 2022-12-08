@@ -1,6 +1,8 @@
 <html>
   <head>
+
     <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" type="text/css" href="listings.css">
   </head>
   <body>
     <ul class='nav'>
@@ -29,17 +31,24 @@
       </li>
     </ul>
     <h1 class="nice-title">All Listings</h1>
-    <% @listing_repository.all.reverse.each do |listing| %>
-      <div>
-        <p>Listing id: <%= listing.id %></p>
-        <p><%= listing.name %></p>
-        <p><%= listing.description %></p>
-        <p>£<%= sprintf("%.2f", listing.price_per_night) %> per night</p>
-        <p>User id: <%= listing.user_id %></p>
-        <a href="/listings/<%= listing.id %>">View listing</a>
-        <p>&nbsp</p>
-      </div>
-    <% end %>
-  </body>
-</head>
+    <% @listing_repository.all.reverse.each do |listing| %> <br>
+    <br>
+    <br>
+    <div class="big-div">
+      <h1><%= listing.name %> </h1>
+      <p><%= listing.description %> </p>
+      <p>£<%= sprintf("%.2f", listing.price_per_night) %> per night </p>
+      <h5>
+        <a href="/listings/<%= listing.id %>">
+          <br>
+          <div class="btn-container">
+            <button type="button" id="btn2">View listing</button>
+        </a>
+      </h5>
+      <p>&nbsp</p>
+    </div>
+    </div>
+    <br><% end %>
+  </body 
 </html>
+

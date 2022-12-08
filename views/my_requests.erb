@@ -1,6 +1,8 @@
 <html>
+
   <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="listings.css">
   </head>
   <body>
   <ul class='nav'>
@@ -45,6 +47,8 @@
           </form>
           <p>&nbsp</p>
         </div>
+        <br>
+        <br>
       <% end %>
     <% end %>
     <h2>Accepted:</h2>
@@ -65,7 +69,7 @@
     <h2>Rejected:</h2>
     <% rejected = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'no'} %>
     <% if rejected.empty?%>
-      <p>No rejected bookings</p>
+      <div><p>No rejected bookings</p></div>
     <% else %>
       <% rejected.each do |request| %>
         <div>
