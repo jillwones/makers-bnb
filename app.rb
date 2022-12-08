@@ -80,7 +80,10 @@ class Application < Sinatra::Base
 
   get '/listings/:id' do
     listing_repository = ListingRepository.new
+    date_repository = DateRepository.new
+ 
     @listing = listing_repository.find_by_id(params[:id])
+    @dates = date_repository.find_by_listing_id(params[:id])
     return erb(:listings_id)
   end
 

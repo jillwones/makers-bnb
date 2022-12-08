@@ -7,6 +7,11 @@
       <p><%= @listing.description %></p>
       <p>£<%= sprintf("%.2f", @listing.price_per_night) %> per night</p>
       <p>User id: <%= @listing.user_id %></p>
+      <p> Dates Available 
+      <% @dates.each do |date| %>
+      <%= date.date_available %>
+      <% end %>
+      </p>
     </div>
 </body>
 </head>
