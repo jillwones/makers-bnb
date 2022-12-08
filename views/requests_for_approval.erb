@@ -1,8 +1,8 @@
 <html>
   <head>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="listings.css">
     <link rel="stylesheet" type="text/css" href="styles-login.css">
+        <link rel="stylesheet" type="text/css" href="listings.css">
   </head>
   <body>
   <ul class='nav'>
@@ -44,7 +44,7 @@
           <p>Date Requested: <%= request.date %></p>
           <p><b>Status: Pending</b></p>       
           <form action="/accept/<%= request.id %>/<%= request.listing_id %>/<%= request.date %>/<%= request.user_id %>" method="post">
-          <button type="submit" class='btn'>Accept</button>
+          <button type="submit" class='btn-round-green'>Accept</button>
           </form>
           
           <form action="/reject/<%= request.id %>/<%= request.user_id %>" method="post">
