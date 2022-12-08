@@ -1,0 +1,70 @@
+h1, h3, body {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+ 
+  body {  
+    margin: 0;  
+    padding: 0;   
+    font-family: 'Arial';  
+    text-align: center;
+  }  
+
+  div {  
+    width: 382px;  
+    overflow: hidden;  
+    margin: auto;  
+    padding: 15px 60px 0px 60px;  
+    background: pink;            
+  }
+  
+  .big-div {
+     border-radius: 15px;
+    border: 2px solid #111;
+  }
+  
+  h2{  
+      text-align: center;  
+      color: black; 
+      padding: 20px;  
+  } 
+
+  h3{  
+    text-align:justify;  
+    color: black; 
+    padding: 20px;  
+} 
+  
+  
+  label{  
+      color: black;
+      font-size: 17px; 
+  }  
+  
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px 100px;
+    gap: 10px;
+  }
+
+  #btn2{
+    background:#3498db;
+    width:125px;  padding-top:5px;
+    padding-bottom:5px;
+    color:white;
+ 
+    border-radius: 15px;
+    border: 2px solid #111;
+    
+  }
+  
+  .btn-container {
+    margin-top: 20px;
+    display:inline;
+    justify-content:center;
+  }
+  
+ 

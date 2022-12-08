@@ -1,26 +1,20 @@
 <html>
-<head>
-<body>
-    <div>
-      <p>Listing id: <%= @listing.id %></p>
-      <p><%= @listing.name %></p>
-      <p><%= @listing.description %></p>
-      <p>£<%= sprintf("%.2f", @listing.price_per_night) %> per night</p>
-      <p>User id: <%= @listing.user_id %></p>
-      <p> Dates Available 
-      <% @dates.each do |date| %>
-      <%= date.date_available %>
-      <% end %>
-      </p>
-
-      
-      <form action="/listings/<%= @listing.id %>" method="post">
-       <label for="start">Date:</label>
+  <head>
+    <link rel="stylesheet" type="text/css" href="listings.css">
+  </head>
+  <body></body>
+  <div>
+    <p>Listing id: <%= @listing.id %> </p>
+    <h1><%= @listing.name %> </h1>
+    <p><%= @listing.description %> </p>
+    <p>£<%= sprintf("%.2f", @listing.price_per_night) %> per night </p>
+    <p>User id: <%= @listing.user_id %> </p>
+    <p> Dates Available <% @dates.each do |date| %><%= date.date_available %><% end %> </p>
+    <form action="/listings/<%= @listing.id %>" method="post">
+      <label for="start">Date:</label>
       <input type="date" id="start" name="date" required min="<%= @dates.first.date_available %>" max="<%= @dates.last.date_available %>">
       <input class="button" type="submit" value="Submit Booking Request">
-      </form>
-    </div>
-    <div> <%= @message unless @message.nil? %> </div>
-</body>
-</head>
+    </form>
+  </div>
+  <div><%= @message unless @message.nil? %> </div>
 </html>

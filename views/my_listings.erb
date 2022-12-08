@@ -1,14 +1,21 @@
 <html>
 <head>
 <body>
+<link rel="stylesheet" type="text/css" href="listings.css">
+<br>
+<br>
+<br>
 <% @listing_repository.all.select { |listing| listing.user_id == session[:user].id }.reverse.each do |listing| %>
     <div>
-        <p>Listing id: <%= listing.id %></p>
-        <p><%= listing.name %></p>
+    
+        <h1><%= listing.name %></h2>
         <p><%= listing.description %></p>
         <p>£<%= sprintf("%.2f", listing.price_per_night) %> per night</p>
-        <p>User id: <%= listing.user_id %></p>
-        <a href="/listings/<%= listing.id %>">View listing</a>
+         <h5><a href="/listings/<%= listing.id %>">
+        <br>
+        <div class="btn-container">
+        <button type="button" id="btn2" >View listing</button></a></h5>
+        
         <p>&nbsp</p>
     </div>      
 <% end %>
