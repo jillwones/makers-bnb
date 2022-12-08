@@ -98,8 +98,8 @@ RSpec.describe Application do
     end
   end
 
-  xcontext "post /listings/:id" do
-    it "submits a booking request and redirects to 'my-requests'" do
+  context "post /listings/:id" do
+    xit "submits a booking request and redirects to 'my-requests'" do
       response = post("/",
                       email: "aimee@aimee.com",
                       password: "aimee")
@@ -134,6 +134,7 @@ RSpec.describe Application do
       post('/',
         email_address: 'aimee@aimee.com',
         password: 'aimee')
+      end
 
     xit "returns 200 OK and adds listing to database" do
       post("/",
