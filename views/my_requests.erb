@@ -48,13 +48,15 @@
       <h2><%= request.name %> </h2>
       <p>Date Requested: <%= request.date %> </p>
       <h5>
-        <a href="listings/<%= request.listing_id %>" <br>
-          <div-class="btn-container">
+        <a href="listings/<%= request.listing_id %>"> <br>
+          <div class="btn-container">
             <button type="button" id="btn2">View listing</button>
         </a>
       </h5>
       <p>&nbsp</p>
-    </div><% end %><% end %> <h2>Rejected:</h2><% rejected = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'no'} %><% if rejected.empty?%> <div class="big-div">
+    </div>
+    <br>
+    <br><% end %><% end %> <h2>Rejected:</h2><% rejected = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'no'} %><% if rejected.empty?%> <div class="big-div">
       <b>
         <p>No rejected bookings</p>
       </b>
