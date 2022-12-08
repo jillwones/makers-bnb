@@ -70,10 +70,9 @@ RSpec.describe Application do
       response = get("/listings")
 
       expect(response.status).to eq(200)
-      expect(response.body).to include("<p>Listing id: 1</p>")
-      expect(response.body).to include("<p>Apartment1</p>")
-      expect(response.body).to include("<p>Two bedrooms in north London</p>")
-      expect(response.body).to include("View listing</a>")
+      expect(response.body).to include("<h1>Apartment1 </h1>")
+      expect(response.body).to include("<p>Two bedrooms in north London </p>")
+      expect(response.body).to include("View listing")
     end
   end
 

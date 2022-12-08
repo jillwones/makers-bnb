@@ -1,80 +1,135 @@
 <html>
   <head>
-
     <link rel="stylesheet" href="styles.css">
     <style>
       body {
-  margin: 0;
-}
+        margin: 0;
+      }
 
-ul.nav {
-  margin:0;
-  padding:0;
-  list-style:none;
-  height:50px; line-height:36px;
-  background: pink; /* you can change the backgorund color here. */
-  font-family:Arial, Helvetica, sans-serif;
-  font-size:13px;
-}
-ul.nav a {
-   /* you can change the border color matching to your background color */
-   margin-top: 7px;
-  background-color: pink;
-  float:left;
-}
+      ul.nav {
+        margin:0;
+        padding:0;
+        list-style:none;
+        height:50px; line-height:36px;
+        background: pink; /* you can change the backgorund color here. */
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:13px;
+      }
+      ul.nav a {
+         /* you can change the border color matching to your background color */
+         margin-top: 7px;
+        background-color: pink;
+        float:left;
+      }
 
-ul.nav button {
-  /* you can change the border color matching to your background color */
+      ul.nav button {
+        /* you can change the border color matching to your background color */
+
+       background-color: pink;
+       float:right;
+       border-radius: 20%;
+      }
+      ul.nav form button {
+        /* display:block;
+        /* padding:0 28px; */
+        /* color:black;
+        text-decoration:none; */
+        padding:0 28px;
+        background-color: rgb(244, 146, 161);
+        border-radius: 8px;
+        border-style: none;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        height: 40px;
+        line-height: 20px;
+        list-style: none;
+        margin-top: 5px;
+        outline: none;
+        padding: 10px 16px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        transition: color 100ms;
+        vertical-align: baseline;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        padding:0 28px;
+      }
+      ul.nav button:hover,
+      ul.nav li.current button,
+      ul.nav a:hover {
+        cursor: pointer;
+        background-color: rgb(237, 77, 101);
+      }
+
+      .button-1:hover,
+      .button-1:focus {
+        background-color: rgb(237, 77, 101);
+      }
+
+      .nice-title {
+        font-size: 30px;
+        font-weight: 600;
+        background-image: linear-gradient(to left, #ac2cba, pink);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        text-align: center;
+      }
+
+       .container-div {
+          width: 382px;
+          overflow: hidden;
+          margin: auto;
+          padding: 15px 60px 0px 60px;
+          background: pink;
+          border-radius: 15px;
+          border: 2px solid #111;
+          border-radius: 8px;
+          text-align: center;
+        }
+
+         .container-div-2 {
+          width: 382px;
+          overflow: hidden;
+          margin: auto;
+          padding: 15px 60px 0px 60px;
+          background: pink;
+          border-radius: 15px;
+          border: 2px solid #111;
+          border-radius: 8px;
+          display: grid;
+          grid-template-columns: auto auto auto;
+          padding: 10px;
+      }
+      .grid-item {
+          background-color: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(0, 0, 0, 0.8);
+          padding: 20px;
+          font-size: 18px;
+          text-align: center;
+      }
+
+      #btn{
+        margin-top:10px;
+    background:#3498db;
+    width:140px;  padding-top:5px;
+    padding-bottom:5px;
+    color:white;
+    border-radius:4px;
+    border: #2980b9 1px solid;
+    cursor: pointer;
+  }
   
- background-color: pink;
- float:right;
- border-radius: 20%;
-}
-ul.nav form button {
-  /* display:block;
-  /* padding:0 28px; */
-  /* color:black;
-  text-decoration:none; */ 
-  padding:0 28px;
-  background-color: rgb(244, 146, 161);
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  height: 40px;
-  line-height: 20px;
-  list-style: none;
-  margin-top: 5px;
-  outline: none;
-  padding: 10px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  padding:0 28px;
-}
-ul.nav button:hover,
-ul.nav li.current button,
-ul.nav a:hover {
-  cursor: pointer;
-  background-color: rgb(237, 77, 101);
-}
-
-
-
-.button-1:hover,
-.button-1:focus {
-  background-color: rgb(237, 77, 101);
-}
+  #btn:hover{ 
+  background:#3594D2; 
+  }
     </style>
   </head>
   <body>
@@ -103,24 +158,25 @@ ul.nav a:hover {
         </form>
       </li>
     </ul>
-    <div>
-      <p>Listing id: <%= @listing.id %></p>
-      <p><%= @listing.name %></p>
+    <h3 class='nice-title'>Listing</h3>
+    <div class="container-div">
+      <h1><%= @listing.name %></h1>
       <p><%= @listing.description %></p>
       <p>£<%= sprintf("%.2f", @listing.price_per_night) %> per night</p>
-      <p>User id: <%= @listing.user_id %></p>
-      <p> Dates Available 
-        <% @dates.each do |date| %>
-          <%= date.date_available %>
-        <% end %>
-      </p>
       <form action="/listings/<%= @listing.id %>" method="post">
-        <label for="start">Date:</label>
-        <input type="date" id="start" name="date" required min="<%= @dates.first.date_available %>" max="<%= @dates.last.date_available %>">
-        <input class="button" type="submit" value="Submit Booking Request">
+        <label for="start">Choose a date to stay:</label>
+        <input type="date" id="start" name="date" required min="<%= @dates.first.date_available %>" max="<%= @dates.last.date_available %>"><br>
+        <input id='btn' class="button" type="submit" value="Submit Booking Request">
       </form>
     </div>
     <div> <%= @message unless @message.nil? %> </div>
+    <h3 class='nice-title'>Dates available:</h3>
+    <div class='container-div-2'>
+      <% @dates.each do |date| %>
+        <div class='grid-item'>
+          <%= date.date_available %>
+        </div>
+      <% end %>
+    </div>
   </body>
 </html>
-

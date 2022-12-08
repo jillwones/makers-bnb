@@ -1,6 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-login.css">
 </head>
 <body>
 <ul class='nav'>
@@ -29,6 +30,7 @@
       </li>
     </ul>
     <h2 class="nice-title">Create a new listing</h2>
+    <div class='login-signup'>
 <form action="/new_listing_form" method="post">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" required><br>
@@ -36,12 +38,12 @@
     <input type="text" id="description" name="description" required required><br>
     <label for="price_per_night">Price per night:</label><br>
     <input type="text" id="price_per_night" name="price_per_night" required><br>
-    <label for='start_date'>Start Date:</label>
-    <input type='date' name='start_date' required>
-    <label for='end_date'>End Date:</label>
-    <input type='date' name='end_date' required>
-    <input class="button" type="submit" value="Create Listing">
+    <label for='start_date'>Start Date:</label><br>
+    <input type='date' id="price_per_night" name='start_date' required><br>
+    <label for='end_date'>End Date:</label><br>
+    <input type='date' id="price_per_night" name='end_date' required><br>
+    <input id="btn2" class="button" type="submit" value="Create Listing">
 </form>
-</body
-</head>
+</div>
+</body>
 </html>
