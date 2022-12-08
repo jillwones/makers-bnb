@@ -40,9 +40,7 @@
           <p>Email of requester: <%= @user_repository.find_by_id(request.user_id).email_address %></p>
           <p>Name: <%= request.name %></p>
           <p>Date Requested: <%= request.date %></p>
-          <p><b>Status: Pending</b></p>
-          <p>buttons go here</p>
-          
+          <p><b>Status: Pending</b></p>       
           <form action="/accept/<%= request.id %>/<%= request.listing_id %>/<%= request.date %>/<%= request.user_id %>" method="post">
           <button type="submit">Accept</button>
           </form>
