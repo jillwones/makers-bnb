@@ -112,4 +112,12 @@ describe BookingRepository do
       expect(bookings_list.listing_id).to eq '2'
     end 
   end 
+
+  context 'delete method' do 
+    it 'deletes a booking record' do 
+      repo = BookingRepository.new 
+      repo.delete(1)
+      expect(repo.all.first.id).to eq('2')
+    end
+  end
 end

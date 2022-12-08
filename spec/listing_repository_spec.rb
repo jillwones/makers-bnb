@@ -49,16 +49,27 @@ describe ListingRepository do
   end
 
 
-  # context "delete method" do
-  #   it "deletes a listing" do
-  #     repo = ListingRepository.new
-  #     repo.delete(1)
-  #     listings = repo.all
+  context "delete method" do
+    it "deletes a listing" do
+      repo = ListingRepository.new
+      repo.delete(1)
+      listings = repo.all
 
-  #     expect(listings.length).to eq(5)
-  #     expect(listings.first.id).to eq("2")
-  #   end
-  # end
+      expect(listings.length).to eq(5)
+      expect(listings.first.id).to eq("2")
+    end
+
+    it "deletes all bookings and dates_available associated with that listing" do 
+      repo = ListingRepository.new
+      repo.delete(1)
+
+      booking_repository = BookingRepository.new 
+      expect(booking_repository.all.map(&:listing_id)).not_to include('1')
+
+      dates_available_repo = DateRepository.new 
+      expect(dates_available_repo.find_by_listing_id(1)).to eq([])
+    end
+  end
 
   context "find_by_id method" do
     it "finds a single listing by id" do

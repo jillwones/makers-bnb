@@ -13,6 +13,9 @@
           <p>Date Requested: <%= request.date %></p>
           <p><b>Status: Pending</b></p>
           <a href="listings/<%= request.listing_id %>">View this listing</a>
+           <form action="/delete_request/<%= request.id %>" method="post">
+            <input type="submit" value="Cancel Request">
+          </form>
           <p>&nbsp</p>
         </div>
       <% end %>

@@ -26,11 +26,17 @@ class ListingRepository
     record_to_object(record)
   end
 
-  # def delete(id)
-  # ADD SQL QUERY ON BOOKINGS TABLE TO CHANGE BOOKINGS WITH GIVEN LISTING_ID TO NULL BEFORE DELETING LISTING
-  #   sql = "DELETE FROM listings WHERE id = $1;"
-  #   DatabaseConnection.exec_params(sql, [id])
-  # end
+  def delete(listing_id)
+    sql = 'DELETE FROM bookings WHERE listing_id = $1;'
+    sql_params = [listing_id]
+    DatabaseConnection.exec_params(sql, sql_params)
+    sql = 'DELETE FROM dates_available WHERE listing_id = $1;'
+    sql_params = [listing_id]
+    DatabaseConnection.exec_params(sql, sql_params)
+    sql = 'DELETE FROM listings WHERE id = $1;'
+    sql_params = [listing_id]
+    DatabaseConnection.exec_params(sql, sql_params)
+  end
 
   def record_to_object(record)
     listing = Listing.new

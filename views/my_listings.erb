@@ -1,17 +1,20 @@
 <html>
-<head>
-<body>
-<% @listing_repository.all.select { |listing| listing.user_id == session[:user].id }.reverse.each do |listing| %>
-    <div>
-        <p>Listing id: <%= listing.id %></p>
-        <p><%= listing.name %></p>
-        <p><%= listing.description %></p>
-        <p>£<%= sprintf("%.2f", listing.price_per_night) %> per night</p>
-        <p>User id: <%= listing.user_id %></p>
-        <a href="/listings/<%= listing.id %>">View listing</a>
-        <p>&nbsp</p>
-    </div>      
-<% end %>
-</body>
-</head>
+  <head>
+    <body>
+      <% @listing_repository.all.select { |listing| listing.user_id == session[:user].id }.reverse.each do |listing| %>
+        <div>
+          <p>Listing id: <%= listing.id %></p>
+          <p><%= listing.name %></p>
+          <p><%= listing.description %></p>
+          <p>£<%= sprintf("%.2f", listing.price_per_night) %> per night</p>
+          <p>User id: <%= listing.user_id %></p>
+          <a href="/listings/<%= listing.id %>">View listing</a>
+          <form action="/delete_listing/<%= listing.id %>" method="post">
+            <input type="submit" value="Delete Listing">
+          </form>
+          <p>&nbsp</p>
+        </div>
+      <% end %>
+    </body>
+  </head>
 </html>
