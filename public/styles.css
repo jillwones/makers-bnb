@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+}
+
+/* Nav Bar */
+
+ul.nav {
+  margin:0;
+  padding:0;
+  list-style:none;
+  height:50px; line-height:36px;
+  background: pink; /* you can change the backgorund color here. */
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:13px;
+}
+ul.nav a {
+   /* you can change the border color matching to your background color */
+   margin-top: 7px;
+  background-color: pink;
+  float:left;
+}
+
+ul.nav button {
+  /* you can change the border color matching to your background color */
+  
+ background-color: pink;
+ float:right;
+ border-radius: 20%;
+}
+ul.nav form button {
+  /* display:block;
+  /* padding:0 28px; */
+  /* color:black;
+  text-decoration:none; */ 
+  padding:0 28px;
+  background-color: rgb(244, 146, 161);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin-top: 5px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  padding:0 28px;
+}
+ul.nav button:hover,
+ul.nav li.current button,
+ul.nav a:hover {
+  cursor: pointer;
+  background-color: rgb(237, 77, 101);
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: rgb(237, 77, 101);
+}
+
+/* Homepage */
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* homepage buttons */
+
+.button-56 {
+  align-items: center;
+  background-color: pink;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top: 5px;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
+
+/* homepage text */
+
+header h1 {
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #ac2cba, pink);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+header h3 {
+  font-size: 20px;
+  font-weight: 300;
+  background-image: linear-gradient(to left, #ac2cba, pink);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin: 5px;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+/* titles throughout */
+
+.nice-title {
+  font-size: 30px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #ac2cba, pink);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-align: center;
+}

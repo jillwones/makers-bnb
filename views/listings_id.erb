@@ -1,6 +1,107 @@
 <html>
-<head>
-<body>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {
+  margin: 0;
+}
+
+ul.nav {
+  margin:0;
+  padding:0;
+  list-style:none;
+  height:50px; line-height:36px;
+  background: pink; /* you can change the backgorund color here. */
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:13px;
+}
+ul.nav a {
+   /* you can change the border color matching to your background color */
+   margin-top: 7px;
+  background-color: pink;
+  float:left;
+}
+
+ul.nav button {
+  /* you can change the border color matching to your background color */
+  
+ background-color: pink;
+ float:right;
+ border-radius: 20%;
+}
+ul.nav form button {
+  /* display:block;
+  /* padding:0 28px; */
+  /* color:black;
+  text-decoration:none; */ 
+  padding:0 28px;
+  background-color: rgb(244, 146, 161);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin-top: 5px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  padding:0 28px;
+}
+ul.nav button:hover,
+ul.nav li.current button,
+ul.nav a:hover {
+  cursor: pointer;
+  background-color: rgb(237, 77, 101);
+}
+
+
+
+.button-1:hover,
+.button-1:focus {
+  background-color: rgb(237, 77, 101);
+}
+    </style>
+  </head>
+  <body>
+    <ul class='nav'>
+      <li>
+        <a href="/homepage">MakersBnB</a>
+      </li>
+      <li>
+        <form action="/logout" method="post">
+          <button type="submit">Log Out</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-requests" method="get">
+          <button type="submit">View My Requests</button>
+        </form>
+      </li>
+      <li>
+        <form action="/requests-for-approval" method="get">
+          <button type="submit">View Requests For Me</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-listings" method="get">
+          <button type="submit">View My Listings</button>
+        </form>
+      </li>
+    </ul>
     <div>
       <p>Listing id: <%= @listing.id %></p>
       <p><%= @listing.name %></p>
@@ -8,19 +109,16 @@
       <p>£<%= sprintf("%.2f", @listing.price_per_night) %> per night</p>
       <p>User id: <%= @listing.user_id %></p>
       <p> Dates Available 
-      <% @dates.each do |date| %>
-      <%= date.date_available %>
-      <% end %>
+        <% @dates.each do |date| %>
+          <%= date.date_available %>
+        <% end %>
       </p>
-
-      
       <form action="/listings/<%= @listing.id %>" method="post">
-       <label for="start">Date:</label>
-      <input type="date" id="start" name="date" required min="<%= @dates.first.date_available %>" max="<%= @dates.last.date_available %>">
-      <input class="button" type="submit" value="Submit Booking Request">
+        <label for="start">Date:</label>
+        <input type="date" id="start" name="date" required min="<%= @dates.first.date_available %>" max="<%= @dates.last.date_available %>">
+        <input class="button" type="submit" value="Submit Booking Request">
       </form>
     </div>
     <div> <%= @message unless @message.nil? %> </div>
-</body>
-</head>
+  </body>
 </html>

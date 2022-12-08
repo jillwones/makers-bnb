@@ -1,8 +1,36 @@
 <html>
-<head>
-<body>
-<% @listing_repository.all.reverse.each do |listing| %>
-    <div>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <ul class='nav'>
+      <li>
+        <a href="/homepage">MakersBnB</a>
+      </li>
+      <li>
+        <form action="/logout" method="post">
+          <button type="submit">Log Out</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-requests" method="get">
+          <button type="submit">View My Requests</button>
+        </form>
+      </li>
+      <li>
+        <form action="/requests-for-approval" method="get">
+          <button type="submit">View Requests For Me</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-listings" method="get">
+          <button type="submit">View My Listings</button>
+        </form>
+      </li>
+    </ul>
+    <h1 class="nice-title">All Listings</h1>
+    <% @listing_repository.all.reverse.each do |listing| %>
+      <div>
         <p>Listing id: <%= listing.id %></p>
         <p><%= listing.name %></p>
         <p><%= listing.description %></p>
@@ -10,8 +38,8 @@
         <p>User id: <%= listing.user_id %></p>
         <a href="/listings/<%= listing.id %>">View listing</a>
         <p>&nbsp</p>
-    </div>      
-<% end %>
-</body
+      </div>
+    <% end %>
+  </body>
 </head>
 </html>

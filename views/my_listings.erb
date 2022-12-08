@@ -1,7 +1,37 @@
 <html>
   <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <ul class='nav'>
+      <li>
+        <a href="/homepage">MakersBnB</a>
+      </li>
+      <li>
+        <form action="/logout" method="post">
+          <button type="submit">Log Out</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-requests" method="get">
+          <button type="submit">View My Requests</button>
+        </form>
+      </li>
+      <li>
+        <form action="/requests-for-approval" method="get">
+          <button type="submit">View Requests For Me</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-listings" method="get">
+          <button type="submit">View My Listings</button>
+        </form>
+      </li>
+    </ul>
     <body>
-      <% @listing_repository.all.select { |listing| listing.user_id == session[:user].id }.reverse.each do |listing| %>
+    <% all_listings = @listing_repository.all.select { |listing| listing.user_id == session[:user].id } %>
+    <% if !all_listings.empty? %>
+    <h2 class="nice-title">My Listings</h2>
+      <% all_listings.reverse.each do |listing| %>
         <div>
           <p>Listing id: <%= listing.id %></p>
           <p><%= listing.name %></p>
@@ -15,6 +45,8 @@
           <p>&nbsp</p>
         </div>
       <% end %>
+    <% else %>
+        <h2 class="nice-title">No Listings</h2>
+    <% end %>
     </body>
-  </head>
 </html>
