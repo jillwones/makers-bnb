@@ -12,7 +12,15 @@
       <%= date.date_available %>
       <% end %>
       </p>
+
+      
+      <form action="/listings/<%= @listing.id %>" method="post">
+       <label for="start">Date:</label>
+      <input type="date" id="start" name="date" required>
+      <input class="button" type="submit" value="Submit Booking Request">
+      </form>
     </div>
+    <div> <%= @message unless @message.nil? %> </div>
 </body>
 </head>
 </html>
