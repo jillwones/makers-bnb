@@ -26,6 +26,7 @@ ul.nav button {
  background-color: pink;
  float:right;
  border-radius: 20%;
+ cursor: pointer;
 }
 ul.nav form button {
   /* display:block;
