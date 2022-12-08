@@ -129,13 +129,17 @@ class Application < Sinatra::Base
     user_repository = UserRepository.new 
     user = user_repository.find_by_id(params[:user_id])
     text = Text.new 
-    text.send_text_approved('+447379766090')
+    text.send_text_approved('+447379766090') #argument should be user.phone_number
     return redirect '/requests-for-approval'
   end
 
-  post '/reject/:id' do 
+  post '/reject/:id/:user_id' do 
     @booking_repository = BookingRepository.new 
     @booking_repository.decline(params[:id])
+    user_repository = UserRepository.new 
+    user = user_repository.find_by_id(params[:user_id])
+    text = Text.new 
+    text.send_text_rejected('+447379766090') #argument should be user.phone_number
     return redirect '/requests-for-approval'
   end
 

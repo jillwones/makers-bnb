@@ -108,7 +108,7 @@ RSpec.describe Application do
   end
 
   context "post /new_listing_form" do
-    xit "returns 200 OK and adds listing to database" do
+    it "returns 200 OK and adds listing to database" do
       post('/',
         email_address: 'aimee@aimee.com',
         password: 'aimee')
@@ -128,7 +128,7 @@ RSpec.describe Application do
       expect(response.body).to include('<p>Listing id: 7</p>')
       expect(response.body).to include('<p>Loft</p>')
       expect(response.body).to include('<p>Loft conversion in South London</p>')
-      expect(response.body).to include('<p>150</p>')
+      expect(response.body).to include('<p>£150.00 per night</p>')
       expect(response.body).to include('<p>User id: 2</p>')
 
 
@@ -138,7 +138,7 @@ RSpec.describe Application do
       expect(response.body).to include('<p>Listing id: 7</p>')
       expect(response.body).to include('<p>Loft</p>')
       expect(response.body).to include('<p>Loft conversion in South London</p>')
-      expect(response.body).to include('<p>150</p>')
+      expect(response.body).to include('<p>£150.00 per night</p>')
       expect(response.body).to include('<p>User id: 2</p>')
     end 
   end
@@ -196,6 +196,7 @@ RSpec.describe Application do
     end
   end
 
+  #commented out as sends a text everytime 
   context '/accept/:request_id/:listing_id/:request_date/:user_id' do
     xit "changes a pending request to accepted" do
       response = post('/accept/4/3/2022-10-20/4')
@@ -205,9 +206,10 @@ RSpec.describe Application do
     end
   end
 
-  context '/reject/:id' do
-    it 'changes pending request to rejected' do
-      response = post('/reject/4')
+  #commented out as sends a text everytime 
+  context '/reject/:id/:user_id' do
+    xit 'changes pending request to rejected' do
+      response = post('/reject/4/5')
 
       expect(response.status).to eq(302)
       expect(response.body).not_to include('Status: Pending')
