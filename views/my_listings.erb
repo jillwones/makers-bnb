@@ -1,6 +1,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="listings.css">
   </head>
   <ul class='nav'>
       <li>
@@ -32,15 +33,17 @@
     <% if !all_listings.empty? %>
     <h2 class="nice-title">My Listings</h2>
       <% all_listings.reverse.each do |listing| %>
-        <div>
-          <p>Listing id: <%= listing.id %></p>
-          <p><%= listing.name %></p>
+        <div class="big-div">
+          <h2><%= listing.name %></h2>
           <p><%= listing.description %></p>
           <p>£<%= sprintf("%.2f", listing.price_per_night) %> per night</p>
-          <p>User id: <%= listing.user_id %></p>
-          <a href="/listings/<%= listing.id %>">View listing</a>
+          <a href="/listings/<%= listing.id %>">
+          <button type="button" id="btn2">View listing</button>
+          </a>
+          <br>
+          <br>
           <form action="/delete_listing/<%= listing.id %>" method="post">
-            <input type="submit" value="Delete Listing">
+            <input type="submit" id="btn3" value="Delete Listing">
           </form>
           <p>&nbsp</p>
         </div>
@@ -50,4 +53,5 @@
     <% end %>
     </body>
 </html>
+
 

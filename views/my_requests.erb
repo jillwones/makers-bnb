@@ -1,11 +1,10 @@
 <html>
-
   <head>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" type="text/css" href="listings.css">
   </head>
   <body>
-  <ul class='nav'>
+    <ul class='nav'>
       <li>
         <a href="/homepage">MakersBnB</a>
       </li>
@@ -31,55 +30,51 @@
       </li>
     </ul>
     <h1 class="nice-title">Requests made by me</h1>
-    <h2>Pending:</h2>
-    <% pending = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'pending'} %>
-    <% if pending.empty? %>
-      <p>No pending bookings</p>
-    <% else %>
-      <% pending.each do |request| %>
-        <div>
-          <p>Name: <%= request.name %></p>
-          <p>Date Requested: <%= request.date %></p>
-          <p><b>Status: Pending</b></p>
-          <a href="listings/<%= request.listing_id %>">View this listing</a>
-          <form action="/delete_request/<%= request.id %>" method="post">
-            <input type="submit" value="Cancel Request">
-          </form>
-          <p>&nbsp</p>
-        </div>
-        <br>
-        <br>
-      <% end %>
-    <% end %>
-    <h2>Accepted:</h2>
-    <% accepted = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'yes'} %>
-    <% if accepted.empty?%>
-      <p>No accepted bookings</p>
-    <% else %>
-      <% accepted.each do |request| %>
-        <div>
-          <p>Name: <%= request.name %></p>
-          <p>Date Requested: <%= request.date %></p>
-          <p><b>Status: Accepted</b></p>
-          <a href="listings/<%= request.listing_id %>">View this listing</a>
-          <p>&nbsp</p>
-        </div>
-      <% end %>
-    <% end %>
-    <h2>Rejected:</h2>
-    <% rejected = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'no'} %>
-    <% if rejected.empty?%>
-      <div><p>No rejected bookings</p></div>
-    <% else %>
-      <% rejected.each do |request| %>
-        <div>
-          <p>Name: <%= request.name %></p>
-          <p>Date Requested: <%= request.date %></p>
-          <p><b>Status: Rejected</b></p>
-          <a href="listings/<%= request.listing_id %>">View this listing</a>
-          <p>&nbsp</p>
-        </div>
-      <% end %>
-    <% end %>
+    <h2>Pending:</h2><% pending = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'pending'} %><% if pending.empty? %> <p>No pending bookings</p><% else %><% pending.each do |request| %> <div class="big-div">
+      <h2><%= request.name %> </h2>
+      <p>Date Requested: <%= request.date %> </p>
+      <a href="listings/<%= request.listing_id %>" <br>
+        <button type="button" id="btn2">View listing</button>
+      </a>
+      <br>
+      <br>
+      <form action="/delete_request/<%= request.id %>" method="post">
+        <input type="submit" id="btn3" value="Cancel Request">
+      </form>
+      <p>&nbsp</p>
+    </div>
+    <br>
+    <br><% end %><% end %> <h2>Accepted:</h2><% accepted = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'yes'} %><% if accepted.empty?%> <p>No accepted bookings</p><% else %><% accepted.each do |request| %> <div class="big-div">
+      <h2><%= request.name %> </h2>
+      <p>Date Requested: <%= request.date %> </p>
+      <h5>
+        <a href="listings/<%= request.listing_id %>" <br>
+          <div-class="btn-container">
+            <button type="button" id="btn2">View listing</button>
+        </a>
+      </h5>
+      <p>&nbsp</p>
+    </div><% end %><% end %> <h2>Rejected:</h2><% rejected = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'no'} %><% if rejected.empty?%> <div class="big-div">
+      <b>
+        <p>No rejected bookings</p>
+      </b>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div><% else %><% rejected.each do |request| %> <div class="big-div">
+      <h2><%= request.name %> </h2>
+      <p>Date Requested: <%= request.date %> </p>
+      <a href="listings/<%= request.listing_id %>"><br>
+      <div-class="btn-container">
+        <button type="button" id="btn2">View listing</button>
+    </a>
+      <p>&nbsp</p>
+    </div><% end %><% end %>
   </body>
 </html>

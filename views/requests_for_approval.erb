@@ -1,6 +1,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="listings.css">
   </head>
   <body>
   <ul class='nav'>
@@ -35,10 +36,10 @@
       <p>No pending bookings</p>
     <% else %>
       <% pending.each do |request| %>
-        <div>
+        <div class="big-div">
           <p>Name of requester: <%= @user_repository.find_by_id(request.user_id).name %></p>
           <p>Email of requester: <%= @user_repository.find_by_id(request.user_id).email_address %></p>
-          <p>Name: <%= request.name %></p>
+          <p><%= request.name %></p>
           <p>Date Requested: <%= request.date %></p>
           <p><b>Status: Pending</b></p>       
           <form action="/accept/<%= request.id %>/<%= request.listing_id %>/<%= request.date %>/<%= request.user_id %>" method="post">
@@ -48,8 +49,11 @@
           <form action="/reject/<%= request.id %>/<%= request.user_id %>" method="post">
           <button type="submit">Reject</button>
           </form>
-          <a href="listings/<%= request.listing_id %>">View this listing</a>
-          <p>&nbsp</p>
+          <a href="listings/<%= request.listing_id %>" <br>
+          <button type="button" id="btn2">View listing</button>
+        </a>
+        <br>
+        <br>
         </div>
       <% end %>
     <% end %>
@@ -60,14 +64,17 @@
       <p>No accepted bookings</p>
     <% else %>
       <% accepted.each do |request| %>
-        <div>
+        <div class="big-div">
           <p>Name of requester: <%= @user_repository.find_by_id(request.user_id).name %></p>
           <p>Email of requester: <%= @user_repository.find_by_id(request.user_id).email_address %></p>
-          <p>Name: <%= request.name %></p>
+          <p><%= request.name %></p>
           <p>Date Requested: <%= request.date %></p>
           <p><b>Status: Accepted</b></p>
-          <a href="listings/<%= request.listing_id %>">View this listing</a>
-          <p>&nbsp</p>
+          <a href="listings/<%= request.listing_id %>" <br>
+          <button type="button" id="btn2">View listing</button>
+        </a>
+        <br>
+        <br>
         </div>
       <% end %>
     <% end %>
@@ -78,15 +85,18 @@
       <p>No rejected bookings</p>
     <% else %>
       <% rejected.each do |request| %>
-        <div>
+        <div class="big-div">
           <p>Name of requester: <%= @user_repository.find_by_id(request.user_id).name %></p>
           <p>Email of requester: <%= @user_repository.find_by_id(request.user_id).email_address %></p>
           <p>&nbsp</p>
-          <p>Name: <%= request.name %></p>
+          <p><%= request.name %></p>
           <p>Date Requested: <%= request.date %></p>
           <p><b>Status: Rejected</b></p>
-          <a href="listings/<%= request.listing_id %>">View this listing</a>
-          <p>&nbsp</p>
+          <a href="listings/<%= request.listing_id %>" <br>
+          <button type="button" id="btn2">View listing</button>
+        </a>
+        <br>
+        <br>
         </div>
       <% end %>
     <% end %>
