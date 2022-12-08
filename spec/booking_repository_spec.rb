@@ -58,7 +58,7 @@ describe BookingRepository do
       booking = repo.find(3)
       expect(booking.id).to eq "3"
       expect(booking.name).to eq "House1"
-      expect(booking.date).to eq "2022-10-20"
+      expect(booking.date).to eq "2023-12-12"
       expect(booking.booked).to eq "pending"
       expect(booking.user_id).to eq "4"
       expect(booking.listing_id).to eq "3"
@@ -94,7 +94,7 @@ describe BookingRepository do
       booking = repo.find(1)
 
       expect(booking.name).to eq 'Apartment1'
-      expect(booking.date).to eq '2022-10-10'
+      expect(booking.date).to eq '2023-10-10'
       expect(booking.booked).to eq 'yes'
       expect(booking.user_id).to eq '2'
       expect(booking.listing_id).to eq '1'
@@ -106,7 +106,7 @@ describe BookingRepository do
       repo = BookingRepository.new 
       bookings_list = repo.find(2)
       expect(bookings_list.name).to eq 'Apartment2'
-      expect(bookings_list.date).to eq '2022-09-09'
+      expect(bookings_list.date).to eq '2023-09-10'
       expect(bookings_list.booked).to eq 'no'
       expect(bookings_list.user_id).to eq '3'
       expect(bookings_list.listing_id).to eq '2'

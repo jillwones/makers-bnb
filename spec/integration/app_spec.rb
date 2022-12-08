@@ -94,7 +94,7 @@ RSpec.describe Application do
       expect(response.body).to include("<p>Listing id: 2</p>")
       expect(response.body).to include("<p>Apartment2</p>")
       expect(response.body).to include("<p>Three bedrooms in central London</p>")
-      expect(response.body).to include("<p>170.50</p>")
+      expect(response.body).to include("<p>£170.50 per night</p>")
     end
   end
 
@@ -109,16 +109,15 @@ RSpec.describe Application do
 
   context "post /new_listing_form" do
     xit "returns 200 OK and adds listing to database" do
-      response = post('/',
+      post('/',
         email_address: 'aimee@aimee.com',
         password: 'aimee')
-
-      response = post(
+      post(
         "/new_listing_form",
         name: "Loft",
         description: "Loft conversion in South London",
-        price_per_night:"150",
-        user_id: "2",
+        price_per_night: "150",
+        user_id: '2',
         start_date: "2022-12-25",
         end_date: "2022-12-29"
       )
@@ -157,11 +156,11 @@ RSpec.describe Application do
       expect(response.status).to eq(200)
       expect(response.body).to include('<h2>Pending:</h2>')
       expect(response.body).to include('<p>Name: Apartment3</p>')
-      expect(response.body).to include('<p>Date Requested: 2022-10-15</p>')
+      expect(response.body).to include('<p>Date Requested: 2023-12-11</p>')
       expect(response.body).to include('<p><b>Status: Pending</b></p>')
       expect(response.body).to include('<h2>Accepted:</h2>')
       expect(response.body).to include('<p>Name: Apartment1</p>')
-      expect(response.body).to include('<p>Date Requested: 2022-10-10</p>')
+      expect(response.body).to include('<p>Date Requested: 2023-10-10</p>')
       expect(response.body).to include('<p><b>Status: Accepted</b></p>')
       expect(response.body).to include('<h2>Rejected:</h2>')
       expect(response.body).to include('<p>No rejected bookings</p>')
@@ -181,13 +180,13 @@ RSpec.describe Application do
       expect(response.status).to eq(200)
       expect(response.body).to include('<h1>Requests for Approval</h1>')
       expect(response.body).to include('<h2>Pending:</h2>')
-      expect(response.body).to include('<p>Date Requested: 2022-10-10</p>')
+      expect(response.body).to include('<p>Date Requested: 2023-12-11</p>')
       expect(response.body).to include('<p><b>Status: Accepted</b></p>')
       expect(response.body).to include('<p>Name of requester: Aimee</p>')
       expect(response.body).to include('<p>Email of requester: aimee@aimee.com</p>')
       expect(response.body).to include('<p>Name: Apartment3</p>')
       expect(response.body).to include('<h2>Accepted:</h2>')
-      expect(response.body).to include('<p>Date Requested: 2022-10-15</p>')
+      expect(response.body).to include('<p>Date Requested: 2023-10-10</p>')
       expect(response.body).to include('<p><b>Status: Accepted</b></p>')
       expect(response.body).to include('<p>Name of requester: Aimee</p>')
       expect(response.body).to include('<p>Email of requester: aimee@aimee.com</p>')
@@ -197,12 +196,21 @@ RSpec.describe Application do
     end
   end
 
-  # context '/accept/:id' do
-  #   it "changes a pending request to accepted" do
-  #     response = post()
-  #   end
-  # end
+  context '/accept/:request_id/:listing_id/:request_date/:user_id' do
+    xit "changes a pending request to accepted" do
+      response = post('/accept/4/3/2022-10-20/4')
 
-  # context '/reject/:id' do
-  # end
+      expect(response.status).to eq(302)
+      expect(response.body).not_to include('Status: Pending')
+    end
+  end
+
+  context '/reject/:id' do
+    it 'changes pending request to rejected' do
+      response = post('/reject/4')
+
+      expect(response.status).to eq(302)
+      expect(response.body).not_to include('Status: Pending')
+    end
+  end
 end

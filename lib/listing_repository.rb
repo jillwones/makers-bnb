@@ -16,11 +16,6 @@ class ListingRepository
     sql = "INSERT INTO listings (name, description, price_per_night, user_id) VALUES ($1, $2, $3, $4);"
     params = [listing.name, listing.description, listing.price_per_night, listing.user_id]
     DatabaseConnection.exec_params(sql, params)
-    listing.dates_available.each do |date|
-      sql = "INSERT INTO dates_available (date_available, listing_id) VALUES($1, $2);"
-      params = [date, listing.id]
-      DatabaseConnection.exec_params(sql, params)
-    end
     return listing
   end
 
