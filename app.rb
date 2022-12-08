@@ -105,6 +105,11 @@ class Application < Sinatra::Base
       booking.user_id = session[:user].id
       booking.listing_id = params[:id]
       booking_repository.create(booking)
+
+      user_repository = UserRepository.new 
+      owner_of_listing = user_repository.find_by_id(@listing.user_id)
+      text = Text.new 
+      text.send_text_requested('+447379766090') #arg should be owner_of_listing.phone_number
       return redirect "/my-requests"
     else
       session[:message] = "Date unavailable, choose a different date."
