@@ -58,7 +58,9 @@ h1, h3, body {
     margin: auto;  
     padding: 15px 60px 0px 60px;  
     background: pink;  
-    border-radius: 15px;         
+    border-radius: 15px;   
+    border: 2px solid #111;
+    border-radius: 8px;      
   }  
   
   h2{  
@@ -70,3 +72,24 @@ h1, h3, body {
       color: black;
       font-size: 17px; 
   }  
+
+  .title {
+    font-size: 50px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #ac2cba, pink);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  
+  .sub-title {
+    font-size: 20px;
+    font-weight: 300;
+    background-image: linear-gradient(to left, #ac2cba, pink);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    margin: 5px;
+    margin-bottom: 20px;
+    padding: 0;
+  }
