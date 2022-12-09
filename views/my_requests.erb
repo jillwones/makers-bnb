@@ -33,7 +33,7 @@
     <h2>Pending:</h2><% pending = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'pending'} %><% if pending.empty? %> <p>No pending bookings</p><% else %><% pending.each do |request| %> <div class="big-div">
       <h2><%= request.name %> </h2>
       <p>Date Requested: <%= request.date %> </p>
-      <a href="listings/<%= request.listing_id %>" <br>
+      <a href="listings/<%= request.listing_id %>"> <br>
         <button type="button" id="btn2">View listing</button>
       </a>
       <br>
@@ -56,10 +56,12 @@
       <p>&nbsp</p>
     </div>
     <br>
-    <br><% end %><% end %> <h2>Rejected:</h2><% rejected = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'no'} %><% if rejected.empty?%> <div class="big-div">
-      <b>
+    <br><% end %><% end %> <h2>Rejected:</h2>
+    <% rejected = @booking_repository.find_by_user_id(session[:user].id).select{|booking| booking.booked == 'no'} %>
+    <% if rejected.empty?%> 
+    
         <p>No rejected bookings</p>
-      </b>
+    
       <br>
       <br>
       <br>
@@ -69,11 +71,11 @@
       <br>
       <br>
       <br>
-    </div><% else %><% rejected.each do |request| %> <div class="big-div">
+    <% else %><% rejected.each do |request| %> <div class="big-div">
       <h2><%= request.name %> </h2>
       <p>Date Requested: <%= request.date %> </p>
       <a href="listings/<%= request.listing_id %>"><br>
-      <div-class="btn-container">
+      <div class="btn-container">
         <button type="button" id="btn2">View listing</button>
     </a>
       <p>&nbsp</p>

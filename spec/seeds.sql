@@ -3,7 +3,7 @@ TRUNCATE TABLE users, listings, bookings, dates_available RESTART IDENTITY;
 INSERT INTO users (name, phone_number, email_address, password) VALUES ('Jude', '+447877916281', 'jude@jude.com', '$2a$12$sO9PRZqxvPyshRD6KP1fS.jIRQjrUn2zbYW2u4HAMz/MjHToNovPa');
 INSERT INTO users (name, phone_number, email_address, password) VALUES ('Aimee', '+447854988179', 'aimee@aimee.com', '$2a$12$ra6XG3WgBaYau.tUB6i.LOl1a3tYn1pq/p909.h4JSYIYovR5XRZ.');
 INSERT INTO users (name, phone_number, email_address, password) VALUES ('Henry', '+447921846335', 'henry@henry.com', '$2a$12$gldUm1M2yofJkVo7WHJyX.2HEHQGCwquMgTK8mQm9JLZa.27TFn5K');
-INSERT INTO users (name, phone_number, email_address, password) VALUES ('Andy','+447854988179', 'andy@andy.com', '$2a$12$.TtSIasCntWicYgomeeAWOjaWmCQ4lCwEr0hQvJk/QJUhnvZoDAiS');
+INSERT INTO users (name, phone_number, email_address, password) VALUES ('Andy','+447741542803', 'andy@andy.com', '$2a$12$.TtSIasCntWicYgomeeAWOjaWmCQ4lCwEr0hQvJk/QJUhnvZoDAiS');
 INSERT INTO users (name, phone_number, email_address, password) VALUES ('Will', '+447379766090', 'will@will.com', '$2a$12$ayzQb534iEp2sAvJADV4UeNklKJB6isdiCB6rdTTVqpHm2dJFwbZm');
 
 INSERT INTO listings (name, description, price_per_night, user_id) VALUES ('Apartment1', 'Two bedrooms in north London', 100, 1);
