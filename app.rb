@@ -109,7 +109,7 @@ class Application < Sinatra::Base
       user_repository = UserRepository.new 
       owner_of_listing = user_repository.find_by_id(@listing.user_id)
       text = Text.new 
-      text.send_text_requested('+447379766090') #arg should be owner_of_listing.phone_number
+      text.send_text_requested(owner_of_listing.phone_number)
       return redirect "/my-requests"
     else
       session[:message] = "Date unavailable, choose a different date."
@@ -158,7 +158,7 @@ class Application < Sinatra::Base
     user_repository = UserRepository.new
     user = user_repository.find_by_id(params[:user_id])
     text = Text.new 
-    text.send_text_approved('+447379766090') #argument should be user.phone_number
+    text.send_text_approved(user.phone_number)
     return redirect '/requests-for-approval'
   end
 
@@ -168,11 +168,8 @@ class Application < Sinatra::Base
     user_repository = UserRepository.new 
     user = user_repository.find_by_id(params[:user_id])
     text = Text.new 
-    text.send_text_rejected('+447379766090') #argument should be user.phone_number
+    text.send_text_rejected(user.phone_number) 
     return redirect '/requests-for-approval'
-    text = Text.new
-    text.send_text_approved("+447379766090")
-    return redirect "/requests-for-approval"
   end
 
   post "/reject/:id" do
