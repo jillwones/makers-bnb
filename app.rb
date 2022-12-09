@@ -106,9 +106,9 @@ class Application < Sinatra::Base
       booking.listing_id = params[:id]
       booking_repository.create(booking)
 
-      user_repository = UserRepository.new 
+      user_repository = UserRepository.new
       owner_of_listing = user_repository.find_by_id(@listing.user_id)
-      text = Text.new 
+      text = Text.new
       text.send_text_requested(owner_of_listing.phone_number)
       return redirect "/my-requests"
     else
@@ -118,6 +118,7 @@ class Application < Sinatra::Base
   end
 
   get "/new_listing_form" do
+    @todays_date = Date.today.to_s
     return erb(:new_listing_form)
   end
 
@@ -157,19 +158,19 @@ class Application < Sinatra::Base
     dates_available_repo.delete_by_listing_id_and_date(params[:listing_id], params[:request_date])
     user_repository = UserRepository.new
     user = user_repository.find_by_id(params[:user_id])
-    text = Text.new 
+    text = Text.new
     text.send_text_approved(user.phone_number)
-    return redirect '/requests-for-approval'
+    return redirect "/requests-for-approval"
   end
 
-  post '/reject/:id/:user_id' do 
-    @booking_repository = BookingRepository.new 
+  post "/reject/:id/:user_id" do
+    @booking_repository = BookingRepository.new
     @booking_repository.decline(params[:id])
-    user_repository = UserRepository.new 
+    user_repository = UserRepository.new
     user = user_repository.find_by_id(params[:user_id])
-    text = Text.new 
-    text.send_text_rejected(user.phone_number) 
-    return redirect '/requests-for-approval'
+    text = Text.new
+    text.send_text_rejected(user.phone_number)
+    return redirect "/requests-for-approval"
   end
 
   post "/reject/:id" do
@@ -183,16 +184,16 @@ class Application < Sinatra::Base
     return erb(:my_listings)
   end
 
-  post "/delete_listing/:listing_id" do 
-    @listing_repository = ListingRepository.new 
+  post "/delete_listing/:listing_id" do
+    @listing_repository = ListingRepository.new
     @listing_repository.delete(params[:listing_id])
-    return redirect '/my-listings'
+    return redirect "/my-listings"
   end
 
-  post "/delete_request/:request_id" do 
-    booking_repository = BookingRepository.new 
+  post "/delete_request/:request_id" do
+    booking_repository = BookingRepository.new
     booking_repository.delete(params[:request_id])
-    return redirect '/my-requests'
+    return redirect "/my-requests"
   end
 
   def method_to_make_multiple_dates(listing, start_date, end_date)
