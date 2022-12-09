@@ -1,14 +1,25 @@
 <html>
   <head>
-
     <link rel="stylesheet" href="styles.css">
      <link rel="stylesheet" type="text/css" href="listings.css">
+             <style>
+      ul.nav a {
+        margin-top: 5px;
+        background-color: pink;
+        float:left;
+        margin-left: 10px;
+      }
+      ul.nav a:hover {
+        cursor: pointer;
+        
+      }
+    </style>
   </head>
   <body>
     <ul class='nav'>
-      <li>
-        <a href="/homepage">MakersBnB</a>
-      </li>
+        <a href="/homepage">   
+          <img src="logo1.png" alt="MakersBnB logo" width="40" height="40">
+        </a>
       <li>
         <form action="/logout" method="post">
           <button type="submit">Log Out</button>

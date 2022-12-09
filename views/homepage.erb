@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="styles.css">
     <style>
       footer {
-              position: fixed;
+        position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;
@@ -11,12 +11,26 @@
         color: white;
         text-align: center;
       }
+      ul.nav a {
+        margin-top: 5px;
+        background-color: pink;
+        float:left;
+        ;
+      }
+      ul.nav a:hover {
+        cursor: pointer;
+        
+      }
     </style>
   </head>
   <body>
     <ul class='nav'>
       <li>
-        <a href="/homepage">MakersBnB</a>
+        <a href="/homepage">   
+        <div class="logo">
+          <img src="logo1.png" alt="MakersBnB logo" width="40" height="40">
+        </div>
+        </a>
       </li>
       <li>
         <form action="/logout" method="post">
