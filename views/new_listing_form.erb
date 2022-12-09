@@ -39,7 +39,7 @@
     <label for="price_per_night">Price per night:</label><br>
     <input type="text" id="price_per_night" name="price_per_night" required><br>
     <label for='start_date'>Start Date:</label><br>
-    <input type='date' id="price_per_night" name='start_date' required><br>
+    <input type='date' id="price_per_night" name='start_date' required min="<%= @todays_date %>"><br>
     <label for='end_date'>End Date:</label><br>
     <input type='date' id="price_per_night" name='end_date' required><br>
     <input id="btn2" class="button" type="submit" value="Create Listing">
