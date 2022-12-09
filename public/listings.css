@@ -59,6 +59,7 @@ h1, h3, body {
     border-radius: 15px;
     border: 2px solid #111;
     cursor: pointer;
+    justify-content: center;
   }
 
   #btn3{
@@ -76,6 +77,7 @@ h1, h3, body {
     margin-top: 20px;
     display:inline;
     justify-content:center;
+    align-items: center;
   }
   
  
