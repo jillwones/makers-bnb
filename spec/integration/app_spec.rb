@@ -81,8 +81,7 @@ RSpec.describe Application do
       response = get("/listings/1")
 
       expect(response.status).to eq 200
-      expect(response.body).to include("<p>Listing id: 1</p>")
-      expect(response.body).to include("<p>Apartment1</p>")
+      expect(response.body).to include("<h1>Apartment1</h1>")
       expect(response.body).to include("<p>Two bedrooms in north London</p>")
     end
 
@@ -90,32 +89,31 @@ RSpec.describe Application do
       response = get("/listings/2")
 
       expect(response.status).to eq 200
-      expect(response.body).to include("<p>Listing id: 2</p>")
-      expect(response.body).to include("<p>Apartment2</p>")
+      expect(response.body).to include("<h1>Apartment2</h1>")
       expect(response.body).to include("<p>Three bedrooms in central London</p>")
       expect(response.body).to include("<p>£170.50 per night</p>")
     end
   end
 
+  # test passes, but commented out as it sends a text everytime
   context "post /listings/:id" do
-    xit "submits a booking request and redirects to 'my-requests'" do
+    xit "submits a booking request and updates 'my-requests' page" do
       response = post("/",
-                      email: "aimee@aimee.com",
+                      email_address: "aimee@aimee.com",
                       password: "aimee")
 
       expect(response.status).to eq(302)
 
-      response = post("/listings/1",
-                      date: "2023-10-11")
-
-      expect(response.status).to eq(200)
+      response = post("/listings/4",
+                      date: "2023-05-01")
+      
+      expect(response.status).to eq(302)
 
       response = get("/my-requests")
 
       expect(response.status).to eq(200)
-      expect(response.body).to include("<p>Name: Apartment1</p>")
-      expect(response.body).to include("<p>Date Requested: 2023-10-11</p>")
-      expect(response.body).to include("<p><b>Status: Pending</b></p>")
+      expect(response.body).to include("<h2>House2 </h2>")
+      expect(response.body).to include("<p>Date Requested: 2023-05-01 </p>")
     end
   end
 
@@ -135,7 +133,7 @@ RSpec.describe Application do
         password: 'aimee')
       end
 
-    xit "returns 200 OK and adds listing to database" do
+    it "returns 200 OK and adds listing to database" do
       post("/",
            email_address: "aimee@aimee.com",
            password: "aimee")
@@ -152,20 +150,16 @@ RSpec.describe Application do
       response = get("/listings/7")
       
       expect(response.status).to eq 200
-      expect(response.body).to include('<p>Listing id: 7</p>')
-      expect(response.body).to include('<p>Loft</p>')
+      expect(response.body).to include('<h1>Loft</h1>')
       expect(response.body).to include('<p>Loft conversion in South London</p>')
-      expect(response.body).to include('<p>£150.00 per night</p>')
-      expect(response.body).to include('<p>User id: 2</p>')
+      expect(response.body).to include('£150.00 per night')
 
       response = get("/listings")
 
       expect(response.status).to eq 200
-      expect(response.body).to include('<p>Listing id: 7</p>')
-      expect(response.body).to include('<p>Loft</p>')
-      expect(response.body).to include('<p>Loft conversion in South London</p>')
-      expect(response.body).to include('<p>£150.00 per night</p>')
-      expect(response.body).to include('<p>User id: 2</p>')
+      expect(response.body).to include('<h1>Loft </h1>')
+      expect(response.body).to include('<p>Loft conversion in South London </p>')
+      expect(response.body).to include('£150.00 per night')
     end
   end
 
@@ -181,13 +175,11 @@ RSpec.describe Application do
 
       expect(response.status).to eq(200)
       expect(response.body).to include("<h2>Pending:</h2>")
-      expect(response.body).to include("<p>Name: Apartment3</p>")
-      expect(response.body).to include("<p>Date Requested: 2023-12-11</p>")
-      expect(response.body).to include("<p><b>Status: Pending</b></p>")
+      expect(response.body).to include("<h2>Apartment3 </h2>")
+      expect(response.body).to include("<p>Date Requested: 2023-12-11 </p>")
       expect(response.body).to include("<h2>Accepted:</h2>")
-      expect(response.body).to include("<p>Name: Apartment1</p>")
-      expect(response.body).to include("<p>Date Requested: 2023-10-10</p>")
-      expect(response.body).to include("<p><b>Status: Accepted</b></p>")
+      expect(response.body).to include("<h2>Apartment1 </h2>")
+      expect(response.body).to include("<p>Date Requested: 2023-10-10 </p>")
       expect(response.body).to include("<h2>Rejected:</h2>")
       expect(response.body).to include("<p>No rejected bookings</p>")
     end
@@ -204,25 +196,25 @@ RSpec.describe Application do
       response = get("/requests-for-approval")
 
       expect(response.status).to eq(200)
-      expect(response.body).to include("<h1>Requests for Approval</h1>")
+      expect(response.body).to include('<h1 class="nice-title">Requests for Approval</h1>')
       expect(response.body).to include("<h2>Pending:</h2>")
       expect(response.body).to include("<p>Date Requested: 2023-12-11</p>")
       expect(response.body).to include("<p><b>Status: Accepted</b></p>")
       expect(response.body).to include("<p>Name of requester: Aimee</p>")
       expect(response.body).to include("<p>Email of requester: aimee@aimee.com</p>")
-      expect(response.body).to include("<p>Name: Apartment3</p>")
+      expect(response.body).to include("<p>Apartment3</p>")
       expect(response.body).to include("<h2>Accepted:</h2>")
       expect(response.body).to include("<p>Date Requested: 2023-10-10</p>")
       expect(response.body).to include("<p><b>Status: Accepted</b></p>")
       expect(response.body).to include("<p>Name of requester: Aimee</p>")
       expect(response.body).to include("<p>Email of requester: aimee@aimee.com</p>")
-      expect(response.body).to include("<p>Name: Apartment1</p>")
+      expect(response.body).to include("<p>Apartment1</p>")
       expect(response.body).to include("<h2>Rejected:</h2>")
       expect(response.body).to include("<p>No rejected bookings</p>")
     end
   end
 
-  #commented out as sends a text everytime 
+  # test passes, but commented out as it sends a text everytime
   context '/accept/:request_id/:listing_id/:request_date/:user_id' do
     xit "changes a pending request to accepted" do
       response = post("/accept/4/3/2022-10-20/4")
@@ -232,7 +224,7 @@ RSpec.describe Application do
     end
   end
 
-  #commented out as sends a text everytime 
+  # test passes, but commented out as it sends a text everytime
   context '/reject/:id/:user_id' do
     xit 'changes pending request to rejected' do
       response = post('/reject/4/5')
