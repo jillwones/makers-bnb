@@ -12,6 +12,8 @@ require 'date'
 
 DatabaseConnection.connect
 
+# hello
+
 class Application < Sinatra::Base
   enable :sessions
 
