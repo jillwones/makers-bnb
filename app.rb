@@ -111,8 +111,8 @@ class Application < Sinatra::Base
 
       user_repository = UserRepository.new
       owner_of_listing = user_repository.find_by_id(@listing.user_id)
-      text = Text.new
-      text.send_text_requested(owner_of_listing.phone_number)
+      # text = Text.new
+      # text.send_text_requested(owner_of_listing.phone_number)
       return redirect '/my-requests'
     else
       session[:message] = 'Date unavailable, choose a different date.'
@@ -161,8 +161,8 @@ class Application < Sinatra::Base
     dates_available_repo.delete_by_listing_id_and_date(params[:listing_id], params[:request_date])
     user_repository = UserRepository.new
     user = user_repository.find_by_id(params[:user_id])
-    text = Text.new
-    text.send_text_approved(user.phone_number)
+    # text = Text.new
+    # text.send_text_approved(user.phone_number)
     return redirect '/requests-for-approval'
   end
 
@@ -171,8 +171,8 @@ class Application < Sinatra::Base
     @booking_repository.decline(params[:id])
     user_repository = UserRepository.new
     user = user_repository.find_by_id(params[:user_id])
-    text = Text.new
-    text.send_text_rejected(user.phone_number)
+    # text = Text.new
+    # text.send_text_rejected(user.phone_number)
     return redirect '/requests-for-approval'
   end
 
