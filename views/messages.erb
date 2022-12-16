@@ -37,11 +37,8 @@
       </li>
     </ul>
     <h1 class="nice-title">All Messages</h1>
-    <% valid_bookings = @booking_repository.all.select do |booking| %>
-      <% (booking.booked == 'yes') and (session[:user].id == booking.user_id or session[:user].id == (@booking_repository.find_host_id_from_booking_id(booking.id)))%>
-    <% end %>
-    <% if !valid_bookings.empty? %>
-      <% valid_bookings.each do |valid_booking| %>
+    <% if !@valid_bookings.empty? %>
+      <% @valid_bookings.each do |valid_booking| %>
         <br>
         <br>
         <br>

@@ -12,8 +12,6 @@ require 'date'
 
 DatabaseConnection.connect
 
-# hello
-
 class Application < Sinatra::Base
   enable :sessions
 
@@ -205,6 +203,9 @@ class Application < Sinatra::Base
     @message_repository = MessageRepository.new
     @booking_repository = BookingRepository.new
     @user_repository = UserRepository.new
+    @valid_bookings = @booking_repository.all.select do |booking| 
+      (booking.booked == 'yes') and (session[:user].id == booking.user_id or session[:user].id == (@booking_repository.find_host_id_from_booking_id(booking.id)))
+    end
     return erb(:messages)
   end 
 
