@@ -74,6 +74,7 @@ ul.nav li.current button {
 
 ul.nav a:hover {
   cursor: pointer;
+  background: transparent;
 }
 
 .button-1:hover,
@@ -194,3 +195,14 @@ header h3 {
   border-radius: 15px;
   border: 2px solid #111;
 }
+
+.message {  
+  width: 382px;  
+  overflow: hidden;  
+  margin: auto;  
+  padding: 15px 60px 0px 60px;  
+  background: pink;  
+  border-radius: 15px;   
+  border: 2px solid #111;
+  border-radius: 8px;      
+}  

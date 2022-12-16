@@ -1,8 +1,8 @@
 <html>
-<head>
+  <head>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles-login.css">
-            <style>
+    <style>
       ul.nav a {
         margin-top: 5px;
         background-color: pink;
@@ -11,17 +11,15 @@
       }
       ul.nav a:hover {
         cursor: pointer;
-        
+        background: transparent;
       }
     </style>
-</head>
-<body>
-<ul class='nav'>
+  </head>
+  <body>
+    <ul class='nav'>
       <li>
-        <a href="/homepage">   
-        <div class="logo">
+        <a href="/homepage">
           <img src="logo1.png" alt="MakersBnB logo" width="40" height="40">
-        </div>
         </a>
       </li>
       <li>
@@ -52,19 +50,19 @@
     </ul>
     <h2 class="nice-title">Create a new listing</h2>
     <div class='login-signup'>
-<form action="/new_listing_form" method="post">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" required><br>
-    <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description" required required><br>
-    <label for="price_per_night">Price per night:</label><br>
-    <input type="text" id="price_per_night" name="price_per_night" required><br>
-    <label for='start_date'>Start Date:</label><br>
-    <input type='date' id="price_per_night" name='start_date' required min="<%= @todays_date %>"><br>
-    <label for='end_date'>End Date:</label><br>
-    <input type='date' id="price_per_night" name='end_date' required><br>
-    <input id="btn2" class="button" type="submit" value="Create Listing">
-</form>
-</div>
-</body>
+      <form action="/new_listing_form" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="description">Description:</label><br>
+        <input type="text" id="description" name="description" required required><br>
+        <label for="price_per_night">Price per night:</label><br>
+        <input type="text" id="price_per_night" name="price_per_night" required><br>
+        <label for='start_date'>Start Date:</label><br>
+        <input type='date' id="price_per_night" name='start_date' required min="<%= @todays_date %>"><br>
+        <label for='end_date'>End Date:</label><br>
+        <input type='date' id="price_per_night" name='end_date' required><br>
+        <input id="btn2" class="button" type="submit" value="Create Listing">
+      </form>
+    </div>
+  </body>
 </html>
