@@ -1,4 +1,4 @@
-TRUNCATE TABLE users, listings, bookings, dates_available RESTART IDENTITY;
+TRUNCATE TABLE users, listings, bookings, dates_available, messages RESTART IDENTITY;
 
 INSERT INTO users (name, phone_number, email_address, password) VALUES ('Jude', '+447877916281', 'jude@jude.com', '$2a$12$sO9PRZqxvPyshRD6KP1fS.jIRQjrUn2zbYW2u4HAMz/MjHToNovPa');
 INSERT INTO users (name, phone_number, email_address, password) VALUES ('Aimee', '+447854988179', 'aimee@aimee.com', '$2a$12$ra6XG3WgBaYau.tUB6i.LOl1a3tYn1pq/p909.h4JSYIYovR5XRZ.');
