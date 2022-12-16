@@ -32,3 +32,15 @@ CREATE TABLE dates_available (
   listing_id int,
   constraint fk_listing foreign key(listing_id) references listings(id)
 );
+
+CREATE TABLE messages (
+  id SERIAL PRIMARY KEY,
+  content text,
+  date_time TIMESTAMP,
+  host_id int,
+  constraint fk_host foreign key(host_id) references users(id),
+  user_id int,
+  constraint fk_user foreign key(user_id) references users(id),
+  sender_id int,
+  constraint fk_sender foreign key(sender_id) references users(id)
+);

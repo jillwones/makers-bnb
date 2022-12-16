@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="/listings.css">
+    <style>
+      ul.nav a {
+        margin-top: 5px;
+        background-color: pink;
+        float:left;
+        margin-left: 10px;
+      }
+      ul.nav a:hover {
+        cursor: pointer;
+        background: transparent;
+      }
+      .big-div {
+        margin: 10px;
+      }
+
+      .comment-input {
+        width: 382px;
+        overflow: hidden;
+        margin: auto;
+        background: rgb(237, 77, 101);
+        border-radius: 15px;
+        border: 2px solid #111;
+        border-radius: 8px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class='nav'>
+      <li>
+        <a href="/homepage">
+          <img src="/logo1.png" alt="MakersBnB logo" width="40" height="40">
+        </a>
+      </li>
+      <li>
+        <form action="/logout" method="post">
+          <button type="submit">Log Out</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-requests" method="get">
+          <button type="submit">View My Requests</button>
+        </form>
+      </li>
+      <li>
+        <form action="/requests-for-approval" method="get">
+          <button type="submit">View Requests For Me</button>
+        </form>
+      </li>
+      <li>
+        <form action="/my-listings" method="get">
+          <button type="submit">View My Listings</button>
+        </form>
+      </li>
+      <li>
+        <form action="/messages" method="get">
+          <button type="submit">My Messages</button>
+        </form>
+      </li>
+    </ul>
+    <% if (session[:user].id == params[:user_id]) or (session[:user].id == params[:host_id]) %>
+    <% if session[:user].id == params[:user_id] %>
+      <h2 class='nice-title'>Chat with <%= @user_repo.find_by_id(params[:host_id]).name %></h2>
+    <% else %>
+       <h2 class='nice-title'>Chat with <%= @user_repo.find_by_id(params[:user_id]).name %></h2>
+    <% end %>
+    
+      <div class="comment-input" style="margin-top:30px;">
+        <form action="/messages/new/<%= params[:host_id] %>/<%= params[:user_id] %>" method="post">
+          <label for="content"><h2 style="margin:0;color:white;">Enter message here</h2></label><br>
+          <input class="input-box" style="width:80%;margin:5 0 8 0;" type="text" id="content" name="content"><br>
+          <input type="submit" id="btn2" value="Send">
+        </form>
+      </div>
+      <% @messages.reverse.each do |message| %> <br>
+        <br>
+        <br>
+        <% if session[:user].id == message.sender_id%>
+          <div class="big-div" style="float:right;width:60%;">
+            <h1><%= (@user_repo.find_by_id(message.sender_id)).name %>: <%= message.content %></h1>
+            <p>
+              <h1 style="color:gray;font-weight:normal;"><%= message.date_time %></h1>
+            </p>
+            <p>&nbsp</p>
+          </div>
+        </div>
+      <% else %>
+        <div class="big-div" style="float:left;width:60%;">
+          <h1><%= (@user_repo.find_by_id(message.sender_id)).name %>: <%= message.content %></h1>
+          <p>
+              <h1 style="color:gray;font-weight:normal;"><%= message.date_time %></h1>
+          </p>
+          <p>&nbsp</p>
+        </div>
+      </div>
+      <br>
+    <% end %>
+  <% end %>
+<%else%>
+  <h1>You have to be logged in to see your messages with others</h1>
+<% end %>
+</body>
+</html>

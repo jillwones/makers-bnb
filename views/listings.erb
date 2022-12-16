@@ -1,8 +1,8 @@
 <html>
   <head>
-    <link rel="stylesheet" href="styles.css">
-     <link rel="stylesheet" type="text/css" href="listings.css">
-             <style>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="/listings.css">
+    <style>
       ul.nav a {
         margin-top: 5px;
         background-color: pink;
@@ -11,15 +11,17 @@
       }
       ul.nav a:hover {
         cursor: pointer;
-        
+        background: transparent;
       }
     </style>
   </head>
   <body>
     <ul class='nav'>
-        <a href="/homepage">   
-          <img src="logo1.png" alt="MakersBnB logo" width="40" height="40">
+      <li>
+        <a href="/homepage">
+          <img src="/logo1.png" alt="MakersBnB logo" width="40" height="40">
         </a>
+      </li>
       <li>
         <form action="/logout" method="post">
           <button type="submit">Log Out</button>
@@ -40,26 +42,31 @@
           <button type="submit">View My Listings</button>
         </form>
       </li>
+      <li>
+        <form action="/messages" method="get">
+          <button type="submit">My Messages</button>
+        </form>
+      </li>
     </ul>
     <h1 class="nice-title">All Listings</h1>
     <% @listing_repository.all.reverse.each do |listing| %> <br>
-    <br>
-    <br>
-    <div class="big-div">
-      <h1><%= listing.name %> </h1>
-      <p><%= listing.description %> </p>
-      <p>£<%= sprintf("%.2f", listing.price_per_night) %> per night </p>
-      <h5>
-        <a href="/listings/<%= listing.id %>">
-          <br>
-          <div class="btn-container">
-            <button type="button" id="btn2">View listing</button>
-        </a>
-      </h5>
-      <p>&nbsp</p>
-    </div>
-    </div>
-    <br><% end %>
-  </body 
+      <br>
+      <br>
+      <div class="big-div">
+        <h1><%= listing.name %> </h1>
+        <p><%= listing.description %> </p>
+        <p>£<%= sprintf("%.2f", listing.price_per_night) %> per night </p>
+        <h5>
+          <a href="/listings/<%= listing.id %>">
+            <br>
+            <div class="btn-container">
+              <button type="button" id="btn2">View listing</button>
+            </a>
+          </h5>
+          <p>&nbsp</p>
+        </div>
+      </div>
+      <br>
+    <% end %>
+  </body>
 </html>
-

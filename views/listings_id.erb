@@ -1,6 +1,6 @@
 <html>
   <head>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <style>
       body {
         margin: 0;
@@ -11,29 +11,29 @@
         padding:0;
         list-style:none;
         height:50px; line-height:36px;
-        background: pink; /* you can change the backgorund color here. */
+        background: pink; you can change the backgorund color here.
         font-family:Arial, Helvetica, sans-serif;
         font-size:13px;
       }
       ul.nav a {
-         /* you can change the border color matching to your background color */
+         you can change the border color matching to your background color
          margin-top: 7px;
         background-color: pink;
         float:left;
       }
 
       ul.nav button {
-        /* you can change the border color matching to your background color */
+        you can change the border color matching to your background color
 
        background-color: pink;
        float:right;
        border-radius: 20%;
       }
       ul.nav form button {
-        /* display:block;
-        /* padding:0 28px; */
-        /* color:black;
-        text-decoration:none; */
+        display:block;
+        padding:0 28px;
+        color:black;
+        text-decoration:none;
         padding:0 28px;
         background-color: rgb(244, 146, 161);
         border-radius: 8px;
@@ -118,23 +118,28 @@
 
       #btn{
         margin-top:10px;
-    background:#3498db;
-    width:160px;  padding-top:5px;
-    padding-bottom:5px;
-    color:white;
-    border-radius:4px;
-    border: #2980b9 1px solid;
-    cursor: pointer;
-  }
-  
-  #btn:hover{ 
-  background:#3594D2; 
-  }
+          background:#3498db;
+          width:160px;  padding-top:5px;
+          padding-bottom:5px;
+          color:white;
+          border-radius:4px;
+          border: #2980b9 1px solid;
+          cursor: pointer;
+        }
+
+        #btn:hover{
+        background:#3594D2;
+        }
+
+        ul.nav a:hover {
+          cursor: pointer;
+          background: transparent;
+        }
     </style>
   </head>
   <body>
-  <style>
-      ul.nav a {
+    <style>
+      /* ul.nav a {
         margin-top: 5px;
         background-color: pink;
         float:left;
@@ -142,13 +147,17 @@
       }
       ul.nav a:hover {
         cursor: pointer;
-        
-      }
+
+      } */
     </style>
     <ul class='nav'>
-        <a href="/homepage">   
-          <img src="/logo1.png" alt="MakersBnB logo" width="40" height="40">
+      <li>
+        <a href="/homepage">
+          <div class="logo">
+            <img src="/logo1.png" alt="MakersBnB logo" width="40" height="40">
+          </div>
         </a>
+      </li>
       <li>
         <form action="/logout" method="post">
           <button type="submit">Log Out</button>
@@ -167,6 +176,11 @@
       <li>
         <form action="/my-listings" method="get">
           <button type="submit">View My Listings</button>
+        </form>
+      </li>
+      <li>
+        <form action="/messages" method="get">
+          <button type="submit">My Messages</button>
         </form>
       </li>
     </ul>

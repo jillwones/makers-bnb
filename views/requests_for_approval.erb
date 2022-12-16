@@ -2,8 +2,8 @@
   <head>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" type="text/css" href="styles-login.css">
-        <link rel="stylesheet" type="text/css" href="listings.css">
-          <style>
+    <link rel="stylesheet" type="text/css" href="listings.css">
+    <style>
       ul.nav a {
         margin-top: 5px;
         background-color: pink;
@@ -12,15 +12,17 @@
       }
       ul.nav a:hover {
         cursor: pointer;
-        
+        background: transparent;
       }
     </style>
   </head>
   <body>
-  <ul class='nav'>
-        <a href="/homepage">   
+    <ul class='nav'>
+      <li>
+        <a href="/homepage">
           <img src="logo1.png" alt="MakersBnB logo" width="40" height="40">
         </a>
+      </li>
       <li>
         <form action="/logout" method="post">
           <button type="submit">Log Out</button>
@@ -41,6 +43,11 @@
           <button type="submit">View My Listings</button>
         </form>
       </li>
+      <li>
+        <form action="/messages" method="get">
+          <button type="submit">My Messages</button>
+        </form>
+      </li>
     </ul>
     <h1 class="nice-title">Requests for Approval</h1>
     <h2>Pending:</h2>
@@ -54,19 +61,19 @@
           <p>Email of requester: <%= @user_repository.find_by_id(request.user_id).email_address %></p>
           <p><%= request.name %></p>
           <p>Date Requested: <%= request.date %></p>
-          <p><b>Status: Pending</b></p>       
+          <p><b>Status: Pending</b></p>
           <form action="/accept/<%= request.id %>/<%= request.listing_id %>/<%= request.date %>/<%= request.user_id %>" method="post">
-          <button type="submit" class='btn-round-green'>Accept</button>
+            <button type="submit" class='btn-round-green'>Accept</button>
           </form>
-          
+
           <form action="/reject/<%= request.id %>/<%= request.user_id %>" method="post">
-          <button type="submit" id='btn3'>Reject</button>
+            <button type="submit" id='btn3'>Reject</button>
           </form>
           <a href="listings/<%= request.listing_id %>" >
-          <button type="button" id="btn2">View listing</button>
-        </a>
-        <br>
-        <br>
+            <button type="button" id="btn2">View listing</button>
+          </a>
+          <br>
+          <br>
         </div>
         <br>
         <br>
@@ -86,10 +93,10 @@
           <p>Date Requested: <%= request.date %></p>
           <p><b>Status: Accepted</b></p>
           <a href="listings/<%= request.listing_id %>" <br>
-          <button type="button" id="btn2">View listing</button>
-        </a>
-        <br>
-        <br>
+            <button type="button" id="btn2">View listing</button>
+          </a>
+          <br>
+          <br>
         </div>
         <br>
         <br>
@@ -110,10 +117,10 @@
           <p>Date Requested: <%= request.date %></p>
           <p><b>Status: Rejected</b></p>
           <a href="listings/<%= request.listing_id %>" ><br>
-          <button type="button" id="btn2">View listing</button>
-        </a>
-        <br>
-        <br>
+            <button type="button" id="btn2">View listing</button>
+          </a>
+          <br>
+          <br>
         </div>
         <br>
         <br>

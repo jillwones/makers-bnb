@@ -2,7 +2,7 @@ require_relative 'booking'
 
 class BookingRepository
   def all
-    sql = 'SELECT id,name,date, booked,user_id, listing_id FROM bookings;'
+    sql = 'SELECT id,name,date, booked, user_id, listing_id FROM bookings;'
     params = []
     result_set = DatabaseConnection.exec_params(sql, params)
     bookings = []
@@ -61,6 +61,14 @@ class BookingRepository
       bookings << booking_to_object(record)
     end
     bookings
+  end
+
+  def find_host_id_from_booking_id(booking_id)
+    sql = 'SELECT listings.id, listings.user_id FROM listings JOIN bookings ON listings.id = bookings.listing_id WHERE bookings.id = $1;'
+    sql_params = [booking_id]
+    result_set = DatabaseConnection.exec_params(sql, sql_params)
+    record = result_set[0]
+    return record['user_id']
   end
 
   def delete(id)
