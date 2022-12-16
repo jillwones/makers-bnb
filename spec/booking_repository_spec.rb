@@ -120,4 +120,11 @@ describe BookingRepository do
       expect(repo.all.first.id).to eq('2')
     end
   end
+
+  context 'find host id from booking id' do 
+    it 'finds the correct host id from a booking id' do 
+      repo = BookingRepository.new 
+      expect(repo.find_host_id_from_booking_id(6)).to eq('1')
+    end 
+  end
 end

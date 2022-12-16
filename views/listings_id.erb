@@ -1,8 +1,8 @@
 <html>
   <head>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <style>
-      body {
+      /* body {
         margin: 0;
       }
 
@@ -129,12 +129,12 @@
   
   #btn:hover{ 
   background:#3594D2; 
-  }
+  } */
     </style>
   </head>
   <body>
   <style>
-      ul.nav a {
+      /* ul.nav a {
         margin-top: 5px;
         background-color: pink;
         float:left;
@@ -143,12 +143,16 @@
       ul.nav a:hover {
         cursor: pointer;
         
-      }
+      } */
     </style>
     <ul class='nav'>
+      <li>
         <a href="/homepage">   
-          <img src="/logo1.png" alt="MakersBnB logo" width="40" height="40">
+        <div class="logo">
+          <img src="logo1.png" alt="MakersBnB logo" width="40" height="40">
+        </div>
         </a>
+      </li>
       <li>
         <form action="/logout" method="post">
           <button type="submit">Log Out</button>
@@ -167,6 +171,11 @@
       <li>
         <form action="/my-listings" method="get">
           <button type="submit">View My Listings</button>
+        </form>
+      </li>
+      <li>
+        <form action="/messages" method="get">
+          <button type="submit">My Messages</button>
         </form>
       </li>
     </ul>

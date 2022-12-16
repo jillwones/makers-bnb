@@ -67,10 +67,13 @@ ul.nav form button {
   padding:0 28px;
 }
 ul.nav button:hover,
-ul.nav li.current button,
-ul.nav a:hover {
+ul.nav li.current button {
   cursor: pointer;
   background-color: rgb(237, 77, 101);
+}
+
+ul.nav a:hover {
+  cursor: pointer;
 }
 
 .button-1:hover,

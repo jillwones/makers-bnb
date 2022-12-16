@@ -38,3 +38,8 @@ INSERT INTO dates_available (date_available, listing_id) VALUES ('2023-12-11', 6
 INSERT INTO dates_available (date_available, listing_id) VALUES ('2023-12-12', 6);
 INSERT INTO dates_available (date_available, listing_id) VALUES ('2023-12-13', 6);
 INSERT INTO dates_available (date_available, listing_id) VALUES ('2023-12-14', 6);
+
+INSERT INTO messages (content, date_time, host_id, user_id, sender_id) VALUES ('Hi, I am looking forward to the trip', '2022-12-16 10:30:00', 1, 2, 2);
+INSERT INTO messages (content, date_time, host_id, user_id, sender_id) VALUES ('You best pay me', '2022-12-16 10:31:00', 1, 2, 1);
+INSERT INTO messages (content, date_time, host_id, user_id, sender_id) VALUES ('Yes, I will', '2022-12-16 10:32:00', 1, 2, 2);
+INSERT INTO messages (content, date_time, host_id, user_id, sender_id) VALUES ('Good', '2022-12-16 10:33:00', 1, 2, 1);

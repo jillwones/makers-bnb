@@ -1,4 +1,4 @@
-TRUNCATE TABLE users, listings, bookings, dates_available RESTART IDENTITY;
+TRUNCATE TABLE users, listings, bookings, dates_available, messages RESTART IDENTITY;
 
 INSERT INTO users (name, phone_number, email_address, password) VALUES ('Jude', '+447877916281', 'jude@jude.com', '$2a$12$sO9PRZqxvPyshRD6KP1fS.jIRQjrUn2zbYW2u4HAMz/MjHToNovPa');
 INSERT INTO users (name, phone_number, email_address, password) VALUES ('Aimee', '+447854988179', 'aimee@aimee.com', '$2a$12$ra6XG3WgBaYau.tUB6i.LOl1a3tYn1pq/p909.h4JSYIYovR5XRZ.');
@@ -38,3 +38,8 @@ INSERT INTO dates_available (date_available, listing_id) VALUES ('2023-12-11', 6
 INSERT INTO dates_available (date_available, listing_id) VALUES ('2023-12-12', 6);
 INSERT INTO dates_available (date_available, listing_id) VALUES ('2023-12-13', 6);
 INSERT INTO dates_available (date_available, listing_id) VALUES ('2023-12-14', 6);
+
+INSERT INTO messages (content, date_time, host_id, user_id, sender_id) VALUES ('Hi, I am looking forward to the trip', '2022-12-16 10:30:00', 1, 2, 2);
+INSERT INTO messages (content, date_time, host_id, user_id, sender_id) VALUES ('You best pay me', '2022-12-16 10:31:00', 1, 2, 1);
+INSERT INTO messages (content, date_time, host_id, user_id, sender_id) VALUES ('Yes, I will', '2022-12-16 10:32:00', 1, 2, 2);
+INSERT INTO messages (content, date_time, host_id, user_id, sender_id) VALUES ('Good', '2022-12-16 10:33:00', 1, 2, 1);

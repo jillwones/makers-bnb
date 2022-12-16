@@ -1,25 +1,18 @@
 <html>
   <head>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-      footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: pink;
-        color: white;
-        text-align: center;
-      }
-      /* ul.nav a {
+    <link rel="stylesheet" href="/styles.css">
+     <link rel="stylesheet" type="text/css" href="/listings.css">
+             <style>
+      ul.nav a {
         margin-top: 5px;
         background-color: pink;
         float:left;
+        margin-left: 10px;
       }
       ul.nav a:hover {
         cursor: pointer;
         
-      } */
+      }
     </style>
   </head>
   <body>
@@ -57,19 +50,32 @@
         </form>
       </li>
     </ul>
-    <header class="homepage-container">
-      <h1>Welcome, <%= session[:user].name %></h1>
-      <h3>"Making your BnB dreams come true..."</h3>
-      <h3>"Wherever you want to be... Makers BnB"</h3>
-      <form action="/new_listing_form" method="get">
-        <button type="submit" class="button-56">Create a new listing</button>
-      </form>
-      <form action="/listings" method="get">
-        <button type="submit" class="button-56">View all listings</button>
-      </form>
-    </header>
-    <footer>
-      <p>Built by Aimée, Andy, Henry, Jude and Will</p>
-    </footer>
+    <h1 class="nice-title">Messages</h1>
+    <% if (session[:user].id == params[:user_id]) or (session[:user].id == params[:host_id]) %>
+    <div class="comment-input">
+         <form action="/messages/new/<%= params[:host_id] %>/<%= params[:user_id] %>" method="post">
+            <label for="content">Enter message here</label><br>
+            <input class="input-box" type="text" id="content" name="content"><br>
+            <input type="submit" value="Submit">
+         </form>
+      </div>
+    <% @messages.reverse.each do |message| %> <br>
+    <br>
+    <br>
+    <div class="big-div">
+      <h1><%= (@user_repo.find_by_id(message.sender_id)).name %>: <%= message.content %></h1>
+      <p><h1><%= message.date_time %></h1> </p>
+      <p>&nbsp</p>
+    </div>
+    </div>
+    
+    <br><% end %>
+    <%else%>
+<h1>You have to be logged in to see your messages with others</h1>
+<% end %>
   </body>
 </html>
+
+
+
+      
