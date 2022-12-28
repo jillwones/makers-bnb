@@ -7,7 +7,6 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
-    htmlbeautifier (1.4.2)
     jwt (2.5.0)
     multi_json (1.15.0)
     mustermann (3.0.0)
@@ -15,6 +14,8 @@ GEM
     nokogiri (1.13.9-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.9-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.5)
     racc (1.6.1)
@@ -58,10 +59,10 @@ GEM
 PLATFORMS
   arm64-darwin-21
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bcrypt (~> 3.1)
-  htmlbeautifier (~> 1.4)
   pg (~> 1.4)
   rack-test (~> 2.0)
   rspec (~> 3.12)
@@ -71,4 +72,4 @@ DEPENDENCIES
   webrick (~> 1.7)
 
 BUNDLED WITH
-   2.3.26
+   2.3.23
